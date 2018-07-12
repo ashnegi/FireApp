@@ -1,3 +1,3 @@
 # FireApp
 
-## Run npm intall first
+## Run npm install first
