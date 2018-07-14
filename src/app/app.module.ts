@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
@@ -20,6 +21,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     AdminModule,
     TooltipModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
