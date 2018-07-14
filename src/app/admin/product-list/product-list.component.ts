@@ -9,6 +9,21 @@ export class ProductListComponent implements OnInit {
 
   constructor() { }
 
+  productsList = [
+    {
+      'name': 'Product 1',
+      'brand': 'Sony',
+      'img': 'abc.jpg',
+      'desc': 'abcd'
+    },
+    {
+      'name': 'Product 2',
+      'brand': 'Sony',
+      'img': 'abc.jpg',
+      'desc': 'abcd'
+    }
+  ];
+
   ngOnInit() {
   }
 

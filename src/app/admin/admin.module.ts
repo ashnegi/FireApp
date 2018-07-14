@@ -1,7 +1,8 @@
-import { NgModule }       from '@angular/core';
-import { CommonModule }   from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { LoginComponent } from './login/login.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { LoginComponent } from './login/login.component';
         AdminRoutingModule
     ],
     declarations:[
-        LoginComponent
+        LoginComponent,
+        ProductListComponent
     ]
 
 })

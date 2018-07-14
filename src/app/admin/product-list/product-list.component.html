@@ -1,37 +1,61 @@
-<div class="page-content">
-  <div class="container">
-    <div class="portlet light">
-      <div class="portlet-title">
-        <div class="caption">
-          <i class="icon-bubble font-green-sharp"></i>
-          <span class="caption-subject font-green-sharp sbold">Toastr Notification Demo</span>
+<div class="page-wrapper-row full-height">
+  <div class="page-wrapper-middle">
+    <div class="page-container">
+      <div class="page-content-wrapper">
+        <div class="page-head">
+          <div class="container">
+            <div class="page-title">
+              <h1>Admin - Products</h1>
+            </div>
+          </div>
         </div>
-        <div class="actions">
-          <div class="btn-group open">
-            <a class="btn green-haze btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown"
-              data-close-others="true" aria-expanded="true"> Actions
-              <i class="fa fa-angle-down"></i>
-            </a>
-            <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="javascript:;"> Option 1</a>
-              </li>
-              <li class="divider"> </li>
-              <li>
-                <a href="javascript:;">Option 2</a>
-              </li>
-              <li>
-                <a href="javascript:;">Option 3</a>
-              </li>
-              <li>
-                <a href="javascript:;">Option 4</a>
-              </li>
-            </ul>
+
+        <div class="page-content">
+          <div class="container">
+            <div class="page-content-inner">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet box green">
+                    <div class="portlet-title">
+                      <div class="caption">
+                      Products </div>
+                    </div>
+
+                    <div class="portlet-body flip-scroll">
+                      <table class="table table-bordered table-striped table-condensed flip-content">
+                        <thead class="flip-content">
+                          <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Images</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let product of productsList;  let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.brand}}</td>
+                            <td>{{product.img}}  </td>
+                            <td>{{product.desc}}  </td>
+                            <td>
+                              <button class="btn btn-primary btn-xs">Edit</button>
+                              <button class="btn btn-danger btn-xs">Delete</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="portlet-body"></div>
     </div>
-
   </div>
+
 </div>
