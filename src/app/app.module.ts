@@ -9,10 +9,12 @@ import { AdminModule } from './admin/admin.module';
 import { TooltipModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    WelcomeComponent,
 
   ],
   imports: [
