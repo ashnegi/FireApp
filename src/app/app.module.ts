@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { TooltipModule } from 'ngx-bootstrap';
-
 import { AppComponent } from './app.component';
 
 
