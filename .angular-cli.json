@@ -20,6 +20,9 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "assets/admin/css/components-rounded.css",
+        "assets/admin/css/layout.css",
+        "assets/admin/css/default.css",
         "styles.css"
       ],
       "scripts": [],
