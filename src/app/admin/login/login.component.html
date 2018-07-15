@@ -11,7 +11,7 @@
                     Lorem ipsum dolor sit amet, coectetuer adipiscing. </p>
                 <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate class="login-form">
                     <div *ngIf="error" class="alert alert-danger">
-                        {{error}}
+                        {{errorMsg}}
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
