@@ -8,7 +8,7 @@ import { Product } from '../modal/product.modal';
 import { QueryFn } from 'angularfire2/database/interfaces';
 @Injectable()
 export class ProductService {
-  private dbPath = "/products";
+  private dbPath = '/products';
   productsRef: AngularFireList<Product> = null;
 
   // products: AngularFireList<any[]>;
@@ -22,12 +22,13 @@ export class ProductService {
     this.productsRef.push(product);
   }
 
-  updateProduct($key: string, value: any): void {
-    this.productsRef.update($key, value).catch(error => this.handleError(error));
+  updateProduct(key: string, value: any): void {
+    this.productsRef.update(key, value).catch(error => this.handleError(error));
   }
 
-  deleteProduct($key: string): void {
-    this.productsRef.remove($key).catch(error => this.handleError(error));
+  deleteProduct(key: string): void {
+    this.productsRef.remove(key).catch(error => this.handleError(error));
+    console.log(key)
   }
 
   getProductsList(): AngularFireList<Product> {
