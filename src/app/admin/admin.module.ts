@@ -6,15 +6,23 @@ import { LoginComponent } from './login/login.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { AdminComponent } from './admin-component';
 
 
 @NgModule({
-  imports: [CommonModule, AdminRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    FormsModule,
+    CollapseModule.forRoot()
+  ],
   declarations: [
     LoginComponent,
     ProductListComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AdminComponent
   ]
 })
 export class AdminModule {}

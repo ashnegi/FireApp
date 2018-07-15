@@ -8,7 +8,6 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
 import { AppRoutingModule } from './router/app.router';
 import { AdminModule } from './admin/admin.module';
 import { TooltipModule } from 'ngx-bootstrap';
@@ -16,6 +15,9 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductService } from './services/product.service';
+
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent],
@@ -29,7 +31,8 @@ import { ProductService } from './services/product.service';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    CollapseModule.forRoot()
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
