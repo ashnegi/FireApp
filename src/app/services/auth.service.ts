@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private firebaseAuth: AngularFireAuth) { }
 
   login(email: string, password: string) {
-    return  this.firebaseAuth.auth.signInWithEmailAndPassword(email, password);
+    return this.firebaseAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
   getToken() {

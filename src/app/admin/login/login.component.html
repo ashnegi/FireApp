@@ -29,12 +29,15 @@
 
                         </div>
                         <div class="col-xs-6">
-                            <input class="form-control" [ngClass]="{'has-danger': password.invalid && (password.dirty || password.touched), 'has-success': password.valid && (password.dirty || password.touched)}"
+                            <input class="form-control" minlength="6" [ngClass]="{'has-danger': password.invalid && (password.dirty || password.touched), 'has-success': password.valid && (password.dirty || password.touched)}"
                                 #password="ngModel" [(ngModel)]="user.password" type="password" placeholder="Password" name="password"
                                 required/>
                                 <div *ngIf="password.errors && (password.dirty || password.touched)">
                                     <div class="red" *ngIf="password.errors.required">
                                         Password is required
+                                    </div>
+                                    <div class="red" *ngIf="password.errors.minlength">
+                                        Password should be at least 6 characters!
                                     </div>
                                     
                                 </div>
