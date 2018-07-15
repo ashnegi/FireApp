@@ -3,15 +3,14 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../modal/product.modal';
 
 @Component({
-  selector: "app-product-list",
-  templateUrl: "./product-list.component.html",
-  styleUrls: ["./product-list.component.css"]
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService) {}
   productsList: Product[];
   product: Product;
-
   ngOnInit() {
     this.getProductsList();
   }
@@ -26,8 +25,8 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  deleteProduct() {
-    console.log(this.product.$key);
-    // this.productService.deleteProduct(this.product.$key);
-  }
+  deleteProduct(product: Product) {
+    this.productsList = this.productsList.filter(h => h !== product);
+    this.productService.deleteProduct(product.key);
+    }
 }
