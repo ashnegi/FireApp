@@ -7,14 +7,14 @@
         <div class="page-head">
           <div class="container">
             <div class="page-title">
-              <h1>Admin - Products</h1>
+              <h1 class="m-t-5">Admin - Products</h1>
             </div>
             <div class="page-title pull-right">
               <button class=" btn btn-success">Add Product</button>
             </div>
           </div>
         </div>
-        <div class="page-content">
+        <div class="page-content m-t-0">
           <div class="container">
             <div class="page-content-inner">
               <div class="row">
@@ -23,6 +23,13 @@
                     <div class="portlet-title">
                       <div class="caption">
                         Products </div>
+                        <div class="action pull-right m-t-3" >
+                          <select class="form-control">
+                            <option value="">Newest</option>
+                            <option value="">A to Z</option>
+                            <option value="">Z to A</option>
+                          </select>
+                        </div>
                     </div>
 
                     <div class="portlet-body flip-scroll">
@@ -34,7 +41,7 @@
                             <th>Brand</th>
                             <th>Images</th>
                             <th>Description</th>
-                            <th>Action</th>
+                            <th width="130">Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -43,7 +50,7 @@
                             <td>{{product.name}}</td>
                             <td>{{product.brand}}</td>
                             <td>{{product.img}} </td>
-                            <td>{{product.desc}} </td>
+                            <td>{{product.description}} </td>
                             <td>
                               <button class="btn btn-primary btn-xs">Edit</button>
                               <button class="btn btn-danger btn-xs" (click)="deleteProduct(product)">Delete</button>
