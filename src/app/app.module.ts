@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductService } from './services/product.service';
+import { AuthService } from './services/auth.service';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
@@ -34,7 +35,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     AngularFireDatabaseModule,
     CollapseModule.forRoot()
   ],
-  providers: [ProductService],
+  providers: [ProductService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
