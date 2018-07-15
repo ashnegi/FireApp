@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductService } from './services/product.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent],
@@ -31,7 +32,7 @@ import { ProductService } from './services/product.service';
     AngularFireStorageModule,
     AngularFireDatabaseModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
