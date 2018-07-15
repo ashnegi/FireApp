@@ -7,41 +7,49 @@
         <div class="container">
           <!-- BEGIN LOGO -->
           <div class="page-logo">
-            <a href="/">
-              FireApp
-            </a>
+            <h1>FireApp</h1>
           </div>
           <!-- END LOGO -->
           <!-- BEGIN RESPONSIVE MENU TOGGLER -->
           <a href="javascript:;" class="menu-toggler"></a>
-       
+
+          <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+              <li class="dropdown dropdown-user dropdown-dark open">
+                <a href="javascript:;" class="dropdown-toggle" (click)="isCollapsed = !isCollapsed">
+                  <img alt="" class="img-circle" src="../../../../assets/admin/img/avatar9.jpg">
+                  <span class="username username-hide-mobile">Nick</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-default" [collapse]="isCollapsed">
+                  <li>
+                    <a routerLink='/admin-login'>
+                      <i class="icon-key"></i> Log Out </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
       <!-- END HEADER TOP -->
       <!-- BEGIN HEADER MENU -->
       <div class="page-header-menu">
         <div class="container">
-          <!-- BEGIN HEADER SEARCH BOX -->
-          <form class="search-form" action="page_general_search.html" method="GET">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search" name="query">
-              <span class="input-group-btn">
-                <a href="javascript:;" class="btn submit">
-                  <i class="icon-magnifier"></i>
-                </a>
-              </span>
-            </div>
-          </form>
-        
+
           <div class="hor-menu  ">
             <ul class="nav navbar-nav">
               <li class="menu-dropdown classic-menu-dropdown ">
-                <a href="javascript:;"> Dashboard
+                <a routerLink='/product-list'> Product
                   <span class="arrow"></span>
                 </a>
-               
               </li>
-            
+              <li class="menu-dropdown classic-menu-dropdown ">
+                <a routerLink='/banner-list'> Banner
+                  <span class="arrow"></span>
+                </a>
+              </li>
+
             </ul>
           </div>
           <!-- END MEGA MENU -->
