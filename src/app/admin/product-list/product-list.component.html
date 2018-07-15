@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="page-wrapper-row full-height">
   <div class="page-wrapper-middle">
     <div class="page-container">
@@ -18,7 +20,7 @@
                   <div class="portlet box green">
                     <div class="portlet-title">
                       <div class="caption">
-                      Products </div>
+                        Products </div>
                     </div>
 
                     <div class="portlet-body flip-scroll">
@@ -38,11 +40,11 @@
                             <td>{{i+1}}</td>
                             <td>{{product.name}}</td>
                             <td>{{product.brand}}</td>
-                            <td>{{product.img}}  </td>
-                            <td>{{product.desc}}  </td>
+                            <td>{{product.img}} </td>
+                            <td>{{product.desc}} </td>
                             <td>
                               <button class="btn btn-primary btn-xs">Edit</button>
-                              <button class="btn btn-danger btn-xs">Delete</button>
+                              <button class="btn btn-danger btn-xs" (click)="deleteProduct($key)">Delete</button>
                             </td>
                           </tr>
                         </tbody>
@@ -59,3 +61,5 @@
   </div>
 
 </div>
+
+<app-footer></app-footer>
