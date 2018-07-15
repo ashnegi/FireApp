@@ -18,12 +18,12 @@
                             <input [ngClass]="{'has-danger': email.invalid && (email.dirty || email.touched)}" class="form-control" #email="ngModel"  type="email" [(ngModel)]="user.email"
                                  placeholder="Email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" email required/>
                                 {{email.className}}
-                                <div class="red" *ngIf="email.errors.required && (email.dirty || email.touched)">
+                                <div class="red" *ngIf="email.invalid && (email.dirty || email.touched)">
                                     Email is required
                                 </div>
-                                <div  class="red" *ngIf="email.errors.pattern"> 
+                                <!-- <div  class="red" *ngIf="email.errors.pattern"> 
                                     Please enter valid email.
-                                </div>	
+                                </div>	 -->
                         </div>
                         <div class="col-xs-6">
                             <input class="form-control" [ngClass]="{'has-danger': password.invalid && (password.dirty || password.touched)}" #password="ngModel" [(ngModel)]="user.password" type="password" placeholder="Password"
