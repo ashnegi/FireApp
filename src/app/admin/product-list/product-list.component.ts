@@ -22,11 +22,13 @@ export class ProductListComponent implements OnInit {
       .valueChanges()
       .subscribe(products => {
         this.productsList = products;
+        console.log(this.productsList)
       });
   }
 
   deleteProduct(product: Product) {
     this.productsList = this.productsList.filter(h => h !== product);
-    this.productService.deleteProduct(product.key);
+    console.log(this.productsList);
+     this.productService.deleteProduct(product.key);
     }
 }

@@ -52,7 +52,7 @@
                             <td>{{product.img}} </td>
                             <td>{{product.description}} </td>
                             <td>
-                              <button class="btn btn-primary btn-xs">Edit</button>
+                              <a class="btn btn-primary btn-xs" routerLink="/product/{{product.slung}}">Edit</a>
                               <button class="btn btn-danger btn-xs" (click)="deleteProduct(product)">Delete</button>
                             </td>
                           </tr>
@@ -71,78 +71,7 @@
 
 </div>
 
-<div class="container">
 
-
-  <div class="form-horizontal">
-    <div class="row">
-      <div class="col-md-2">
-        <div class="form-group">
-          <label class="control-label col-md-4">Key</label>
-          <div class="col-md-8">
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="control-label col-md-4">Name</label>
-          <div class="col-md-8">
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
-   
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="control-label col-md-4">Brand</label>
-          <div class="col-md-8">
-           <select class="form-control">
-             <option value="">iPhone</option>
-             <option value="">Samsung</option>
-             <option value="">MI</option>
-             <option value="">Micromax</option>
-             <option value="">LG</option>
-           </select>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="control-label col-md-4">Featured</label>
-          <div class="col-md-8">
-            <div class="m-t-10">
-              <input type="checkbox">
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label class="col-md-12 control-label text-left">Images</label>
-          <div class="col-md-12">
-
-            <input type="file" name="" id="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label class="col-md-12 control-label text-left">Description</label>
-          <div class="col-md-12">
-            <textarea class="form-control" cols="30" rows="10"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <app-footer></app-footer>

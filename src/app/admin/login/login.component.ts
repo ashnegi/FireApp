@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(f) {
-      console.log(f);
+      // console.log(f);
       const email = f.value.email;
       const password = f.value.password;
       this.authService.login(email, password)
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
            this.error = false;
            this.router.navigate(['/admin-login']);
-        }, 3000);
+        }, 5000);
       });
       f.reset();
 

@@ -28,12 +28,18 @@ export class ProductService {
 
   deleteProduct(key: string): void {
     this.productsRef.remove(key).catch(error => this.handleError(error));
-    console.log(key)
+    console.log(key);
   }
 
   getProductsList(): AngularFireList<Product> {
     return this.productsRef;
   }
+
+  // getProduct(key): AngularFireList<Product> {
+  //   const product = this.afd.list(this.dbPath + '/' + key);
+  //   console.log(product);
+  //   return product;
+  // }
 
   deleteAll(): void {
     this.productsRef.remove().catch(error => this.handleError(error));
