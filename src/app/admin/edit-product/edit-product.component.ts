@@ -33,18 +33,15 @@ export class EditProductComponent implements OnInit {
 
   getProduct() {
     const key = this.route.snapshot.paramMap.get('key');
-    console.log(key);
     this.productService
       .getProductsList()
       .valueChanges()
       .subscribe(products => {
         this.productsList = products;
-        console.log(this.productsList);
         // this.productsList = this.productsList.filter(h => h !== key);
         this.productsList = this.productsList.filter(obj => {
           return obj.slung === key;
         });
-        console.log(this.productsList);
       });
   }
 
@@ -53,17 +50,19 @@ export class EditProductComponent implements OnInit {
   }
 
   onSubmit(f) {
-    const updatedkey = this.route.snapshot.paramMap.get('key');
-    console.log(this.productsList);
-    console.log(f.value.key);
-    const key = f.value.key;
+     const slung = f.value.slung;
     const name = f.value.name;
     const brand = f.value.brand;
     const featured = f.value.featured;
     const img = f.value.img;
     const description = f.value.description;
-
-     this.productService.updateProduct(this.product.updatedkey, { name: f.value.name });
+    console.log(this.productsList[0].key);
+    this.productService.updateProduct(this.productsList[0].key, { slung: f.value.slung });
+    this.productService.updateProduct(this.productsList[0].key, { name: f.value.name });
+    this.productService.updateProduct(this.productsList[0].key, { brand: f.value.brand });
+    this.productService.updateProduct(this.productsList[0].key, { featured: f.value.featured });
+    // this.productService.updateProduct(this.productsList[0].key, { img: f.value.img });
+    this.productService.updateProduct(this.productsList[0].key, { description: f.value.description });
 
   }
 }
