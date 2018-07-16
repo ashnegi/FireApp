@@ -10,7 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   user: any = {};
-  error = '';
+  error;
+  errorMsg = '';
 
   constructor( public authService: AuthService, private router: Router) { }
 
@@ -25,8 +26,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/product-list']);
       })
       .catch(err => {
-        this.error = err;
-        this.router.navigate(['/admin-login']);
+        this.error = true;
+        this.errorMsg = err;
+        setTimeout(() => {
+           this.error = false;
+           this.router.navigate(['/admin-login']);
+        }, 3000);
       });
       f.reset();
 
