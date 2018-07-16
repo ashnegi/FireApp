@@ -1,0 +1,111 @@
+<app-header>
+</app-header>
+<div class="page-wrapper-row full-height m-t-30">
+  <div class="page-wrapper-middle">
+    <div class="page-container">
+      <div class="page-content-wrapper">
+        <div class="container">
+
+          <button class="btn btn-default" (click)="goBack()">
+            <i class="fa fa-arrow-circle-left"></i> Back
+          </button>
+      <form #productEditForm="ngForm" (ngSubmit)="onSubmit(productEditForm)" novalidate>
+          <div class="portlet box green m-t-15">
+            <div class="portlet-title">
+              <div class="caption">
+                Edit Product </div>
+            </div>
+            
+              <div class="portlet-body form" *ngFor="let product of productsList">
+                <div class="p-t-20 p-b-20">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="control-label col-md-12">Key</label>
+                        <div class="col-md-12">
+                          <input type="text" class="form-control" #key="ngModel" [(ngModel)]="product.key" name="key">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="control-label col-md-12">Name</label>
+                        <div class="col-md-12">
+                          <input type="text" class="form-control" #name="ngModel" [(ngModel)]="product.name" name="name">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="control-label col-md-12">Brand</label>
+                        <div class="col-md-12">
+                          <select class="form-control" #brand="ngModel" [(ngModel)]="product.brand" name="brand">
+                            <option *ngFor="let brand of brands; let i = index" [attr.value]="brand.name" [attr.selected]="i == 0 ? true : null">{{brand.name}}</option>
+
+                          </select>
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="control-label col-md-12">Featured</label>
+                        <div class="col-md-12">
+                          <div class="m-t-10">
+                            <input type="checkbox" #featured="ngModel" [(ngModel)]="product.featured" name="featured">
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row m-t-10">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="col-md-12 control-label text-left">Images</label>
+                        <div class="col-md-12">
+
+                          <input type="file" name="" id="">
+
+                          <label class="badge bg-primary m-r-10" *ngFor="let item of product.img">
+                            {{item}}
+                            <i class="fa fa-times-circle text-warning"></i>
+                          </label>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row m-t-10">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="col-md-12 control-label text-left">Description</label>
+                        <div class="col-md-12">
+                          <textarea class="form-control" cols="30" rows="10" #description="ngModel" [(ngModel)]="product.description" name="description"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <div class="row m-t-10">
+                    <div class="col-md-12">
+                      <button type="submit" class="btn btn-circle green" [disabled]="!productEditForm.valid" type="submit">Submit</button>
+                      <button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+          </div>
+</form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer>
+</app-footer>
