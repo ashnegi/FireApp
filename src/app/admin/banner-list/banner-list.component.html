@@ -1,0 +1,74 @@
+<app-header>
+</app-header>
+<div class="page-wrapper-row full-height">
+  <div class="page-wrapper-middle">
+    <div class="page-container">
+      <div class="page-content-wrapper">
+        <div class="page-head">
+          <div class="container">
+            <div class="page-title">
+              <h1 class="m-t-5">{{pageTitle}}</h1>
+            </div>
+            <div class="page-title pull-right">
+              <button class=" btn btn-success">Add Banner</button>
+            </div>
+          </div>
+        </div>
+        <div class="page-content m-t-0">
+          <div class="container">
+            <div class="page-content-inner">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet box green">
+                    <div class="portlet-title">
+                      <div class="caption">
+                        {{title}} </div>
+                      <div class="action pull-right m-t-3">
+                        <select class="form-control">
+                          <option value="">Newest</option>
+                          <option value="">A to Z</option>
+                          <option value="">Z to A</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="portlet-body flip-scroll">
+                      <table class="table table-bordered table-striped table-condensed flip-content">
+                        <thead class="flip-content">
+                          <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th width="130">Action</th>
+                          </tr>
+                        </thead>   
+                        <tbody>
+                          <tr *ngFor="let banner of bannerList;  let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{banner.name}}</td>
+                            <td>
+                              <img [src]="banner.img" width="50">
+                            </td>
+                            <td>
+                              <button class="btn btn-danger btn-xs">Delete</button>
+                            </td>
+                          </tr>
+                        </tbody>                  
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<app-footer></app-footer>

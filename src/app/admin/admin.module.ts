@@ -9,6 +9,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AdminComponent } from './admin-component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { BannerListComponent } from './banner-list/banner-list.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     HeaderComponent,
     FooterComponent,
     AdminComponent,
-    EditProductComponent
+    EditProductComponent,
+    BannerListComponent
   ]
 })
 export class AdminModule {}
