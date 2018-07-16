@@ -3,7 +3,7 @@ import {
   AngularFireDatabase,
   AngularFireList,
 } from 'angularfire2/database';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { Product } from '../modal/product.modal';
 import { QueryFn } from 'angularfire2/database/interfaces';
 @Injectable()
