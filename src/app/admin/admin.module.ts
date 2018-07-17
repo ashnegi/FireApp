@@ -11,7 +11,6 @@ import { AdminComponent } from './admin-component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { BannerListComponent } from './banner-list/banner-list.component';
 
-
 @NgModule({
   imports: [
     CommonModule,

@@ -19,7 +19,7 @@ import { BannerService } from './services/banner.service';
 import { AuthService } from './services/auth.service';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-
+import { AuthGaurd} from './gaurds/auth.gaurd';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent],
@@ -36,7 +36,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     AngularFireDatabaseModule,
     CollapseModule.forRoot()
   ],
-  providers: [ProductService, BannerService, AuthService],
+  providers: [ProductService, BannerService, AuthService, AuthGaurd],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -9,13 +9,13 @@
           <button class="btn btn-default" (click)="goBack()">
             <i class="fa fa-arrow-circle-left"></i> Back
           </button>
-      <form #productEditForm="ngForm" (ngSubmit)="onSubmit(productEditForm)" novalidate>
-          <div class="portlet box green m-t-15">
-            <div class="portlet-title">
-              <div class="caption">
-                Edit Product </div>
-            </div>
-            
+          <form #productEditForm="ngForm" (ngSubmit)="onSubmit(productEditForm)" novalidate>
+            <div class="portlet box green m-t-15">
+              <div class="portlet-title">
+                <div class="caption">
+                  Edit Product </div>
+              </div>
+
               <div class="portlet-body form" *ngFor="let product of productsList">
                 <div class="p-t-20 p-b-20">
                   <div class="row">
@@ -68,12 +68,14 @@
                         <label class="col-md-12 control-label text-left">Images</label>
                         <div class="col-md-12">
 
-                          <input type="file" name="" id="">
-
-                          <label class="badge bg-primary m-r-10" *ngFor="let item of product.img">
+                        <input type="file" name="" id="filebutton" (change)="handleFileInput(target)">
+                          <!-- #img="ngModel" [(ngModel)]="product.img" name="img" -->
+                            <br/>
+                          {{product.img}}
+                          <!-- <label class="badge bg-primary m-r-10" *ngFor="let item of product.img">
                             {{item}}
                             <i class="fa fa-times-circle text-warning"></i>
-                          </label>
+                          </label> -->
 
                         </div>
                       </div>
@@ -99,9 +101,9 @@
                   </div>
                 </div>
               </div>
-           
-          </div>
-</form>
+
+            </div>
+          </form>
         </div>
       </div>
     </div>
