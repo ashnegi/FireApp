@@ -23,18 +23,20 @@
                     <div class="portlet-title">
                       <div class="caption">
                         Products </div>
-                      <div class="action pull-right m-t-3">
+                      <div class="action pull-right m-t-3 form-inline">
                         <select class="form-control">
                           <option value="">Newest</option>
                           <option value="">A to Z</option>
                           <option value="">Z to A</option>
                         </select>
+
+                        <input class="form-control" style="color: black" [(ngModel)]="query" placeholder="Filter by Name or Brand">
                       </div>
                     </div>
 
                     <div class="portlet-body flip-scroll">
                       <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="productsList?.length > 0;else noProducts">
-                        
+
                         <thead class="flip-content">
                           <tr>
                             <th>ID</th>
@@ -47,7 +49,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let product of productsList;  let i = index">
+                          <tr *ngFor="let product of productsList | searchfilter:'name,brand':query ; let i=index ">
                             <td>{{i+1}}</td>
                             <td>{{product.name}}</td>
                             <td>{{product.brand}}</td>
@@ -55,8 +57,8 @@
                             <td>{{product.featured}} </td>
                             <td>{{product.description}} </td>
                             <td>
-                              <a class="btn btn-primary btn-xs" routerLink="/product/{{product.slung}}">Edit</a>
-                              <button class="btn btn-danger btn-xs" (click)="deleteProduct(product)">Delete</button>
+                              <a class="btn btn-primary btn-xs " routerLink="/product/{{product.slung}} ">Edit</a>
+                              <button class="btn btn-danger btn-xs " (click)="deleteProduct(product) ">Delete</button>
                             </td>
                           </tr>
                         </tbody>

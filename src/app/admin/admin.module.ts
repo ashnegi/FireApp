@@ -11,6 +11,7 @@ import { AdminComponent } from './admin-component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { BannerListComponent } from './banner-list/banner-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { SearchFilterPipe } from '../pipe/filter.pipe';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     AdminComponent,
     EditProductComponent,
     BannerListComponent,
-    AddProductComponent
+    AddProductComponent,
+    SearchFilterPipe
   ]
 })
 export class AdminModule {}
