@@ -11,10 +11,15 @@ export class BannerService {
   private dbPath = '/banner';
   bannerRef: AngularFireList<Banner> = null;
   constructor(public afd: AngularFireDatabase) {
-    this.bannerRef = afd.list(this.dbPath);
+
   }
   getBanneerList(): AngularFireList<Banner> {
+    this.bannerRef = this.afd.list(this.dbPath);
     return this.bannerRef;
+  }
+  deleteBanner($key: string): void {
+    this.bannerRef.remove($key).catch(error => this.handleError(error));
+    console.log($key);
   }
   private handleError(error) {
     console.log(error);

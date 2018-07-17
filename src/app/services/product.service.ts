@@ -26,8 +26,7 @@ export class ProductService {
     this.productsRef.remove($key).catch(error => this.handleError(error));
     console.log($key);
   }
-  
-  getProductsList(){
+  getProductsList() {
     this.productsRef = this.afd.list(this.dbPath);
     return this.productsRef;
   }
