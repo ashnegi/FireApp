@@ -9,11 +9,11 @@ import {AuthGaurd} from '../gaurds/auth.gaurd';
 
 const adminRoutes: Routes = [
   // { path: 'admin', component: AdminComponent },
-  { path: '', redirectTo: '/product-list', pathMatch: 'full' },
+  { path: '', redirectTo: '/admin-login', pathMatch: 'full' },
   { path: 'admin-login', component: LoginComponent },
   { path: 'product-list', component: ProductListComponent, canActivate: [AuthGaurd] },
-  { path: 'product/:key', component: EditProductComponent },
-  { path: 'banner-list', component: BannerListComponent}
+  { path: 'product/:key', component: EditProductComponent, canActivate: [AuthGaurd] },
+  { path: 'banner-list', component: BannerListComponent, canActivate: [AuthGaurd] }
 ];
 
 @NgModule({

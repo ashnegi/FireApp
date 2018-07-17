@@ -12,10 +12,8 @@ export class AuthGaurd implements CanActivate {
     return this.afauth.authState.map(auth => {
       if (!auth) {
         this.router.navigate(['/admin-login']);
-        console.log('not login');
         return false;
       } else {
-          console.log('login');
         return true;
       }
     });
