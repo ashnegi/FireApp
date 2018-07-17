@@ -1,6 +1,6 @@
 export interface Product {
   slung?: string;
-  key?: string;
+  $key?: string;
   name?: string;
   brand?: string;
   img?: string;

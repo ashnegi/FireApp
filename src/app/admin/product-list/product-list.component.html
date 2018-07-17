@@ -10,7 +10,7 @@
               <h1 class="m-t-5">Admin - Products</h1>
             </div>
             <div class="page-title pull-right">
-              <button class=" btn btn-success">Add Product</button>
+              <a class="btn btn-success" routerLink='/add-product'>Add Product</a>
             </div>
           </div>
         </div>
@@ -33,13 +33,14 @@
                     </div>
 
                     <div class="portlet-body flip-scroll">
-                      <table class="table table-bordered table-striped table-condensed flip-content">
+                      <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="productsList?.length > 0;else noProducts">
+                        
                         <thead class="flip-content">
                           <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Brand</th>
-                            <th>Images</th>
+                            <th>Image</th>
                             <th>Featured</th>
                             <th>Description</th>
                             <th width="130">Action</th>
@@ -60,6 +61,11 @@
                           </tr>
                         </tbody>
                       </table>
+
+                      <ng-template #noProducts>
+                        <hr>
+                        <h5>There are no products in the system</h5>
+                      </ng-template>
                     </div>
                   </div>
                 </div>

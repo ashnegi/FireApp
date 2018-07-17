@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../modal/product.modal';
-import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-edit-product',
@@ -16,7 +15,8 @@ export class EditProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   private brands: any = [
@@ -26,23 +26,25 @@ export class EditProductComponent implements OnInit {
     { name: 'Micromax' },
     { name: 'LG' }
   ];
-  private basePath = 'uploads/';
+  // private basePath = 'uploads/';
   ngOnInit() {
     this.getProduct();
   }
 
   getProduct() {
     const key = this.route.snapshot.paramMap.get('key');
-    this.productService
-      .getProductsList()
-      .valueChanges()
-      .subscribe(products => {
-        this.productsList = products;
-        // this.productsList = this.productsList.filter(h => h !== key);
-        this.productsList = this.productsList.filter(obj => {
-          return obj.slung === key;
-        });
+    let x = this.productService.getProductsList();
+    x.snapshotChanges().subscribe(item => {
+      this.productsList = [];
+      item.forEach(element => {
+        let y = element.payload.toJSON();
+        y['$key'] = element.key;
+        this.productsList.push(y as Product);
       });
+      this.productsList = this.productsList.filter(obj => {
+        return obj.slung === key;
+      });
+    });
   }
 
   goBack() {
@@ -50,41 +52,32 @@ export class EditProductComponent implements OnInit {
   }
 
   onSubmit(f) {
+    const $key = this.route.snapshot.paramMap.get('key');
+    console.log($key);
     const slung = f.value.slung;
     const name = f.value.name;
     const brand = f.value.brand;
     const featured = f.value.featured;
     const img = f.value.img;
     const description = f.value.description;
-    console.log(this.productsList[0].key);
-    this.productService.updateProduct(this.productsList[0].key, {
-      slung: f.value.slung
-    });
-    this.productService.updateProduct(this.productsList[0].key, {
-      name: f.value.name
-    });
-    this.productService.updateProduct(this.productsList[0].key, {
-      brand: f.value.brand
-    });
-    this.productService.updateProduct(this.productsList[0].key, {
-      featured: f.value.featured
-    });
-    this.productService.updateProduct(this.productsList[0].key, {
-      img: f.value.img
-    });
-    this.productService.updateProduct(this.productsList[0].key, {
+    console.log(this.productsList[0]);
+    console.log(this.productsList[0].$key);
+    this.productService.updateProduct(this.productsList[0].$key, {
+      slung: f.value.slung,
+      name: f.value.name,
+      brand: f.value.brand,
+      featured: f.value.featured || false,
+      img: f.value.img,
       description: f.value.description
     });
+    f.reset();
+    this.router.navigate(['/product-list']);
   }
 
-  handleFileInput(e) {
-    // const file = 'C:\fakepath\banner.png';
-    // console.log(file);
-    // const storageRef = firebase.storage().ref('uploads/' + file);
-    // storageRef.put(file);
-  }
+  // handleFileInput(e) {
+  //   // const file = 'C:\fakepath\banner.png';
+  //   // console.log(file);
+  //   // const storageRef = firebase.storage().ref('uploads/' + file);
+  //   // storageRef.put(file);
+  // }
 }
-
-
-
-

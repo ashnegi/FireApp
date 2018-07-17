@@ -10,6 +10,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AdminComponent } from './admin-component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { BannerListComponent } from './banner-list/banner-list.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { BannerListComponent } from './banner-list/banner-list.component';
     FooterComponent,
     AdminComponent,
     EditProductComponent,
-    BannerListComponent
+    BannerListComponent,
+    AddProductComponent
   ]
 })
 export class AdminModule {}

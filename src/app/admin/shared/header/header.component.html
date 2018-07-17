@@ -17,8 +17,8 @@
             <ul class="nav navbar-nav pull-right">
               <li class="dropdown dropdown-user dropdown-dark open">
                 <a href="javascript:;" class="dropdown-toggle" (click)="isCollapsed = !isCollapsed">
+                  <span class="username username-hide-mobile">{{loggedinUser}} </span>
                   <img alt="" class="img-circle" src="../../../../assets/admin/img/avatar9.jpg">
-                  <span class="username username-hide-mobile">Nick</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-default" [collapse]="isCollapsed">
                   <li>
