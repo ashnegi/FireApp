@@ -49,6 +49,7 @@
                           </tr>
                         </thead>
                         <tbody>
+                       
                           <tr *ngFor="let product of productsList | searchfilter:'name,brand':query ; let i=index ">
                             <td>{{i+1}}</td>
                             <td>{{product.name}}</td>
@@ -57,10 +58,11 @@
                             <td>{{product.featured}} </td>
                             <td>{{product.description}} </td>
                             <td>
-                              <a class="btn btn-primary btn-xs " routerLink="/product/{{product.slung}} ">Edit</a>
+                              <a class="btn btn-primary btn-xs " routerLink="/product/{{product.slung}}">Edit</a>
                               <button class="btn btn-danger btn-xs " (click)="deleteProduct(product) ">Delete</button>
                             </td>
                           </tr>
+
                         </tbody>
                       </table>
 
