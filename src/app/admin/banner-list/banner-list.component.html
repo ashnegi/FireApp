@@ -47,10 +47,10 @@
                             <td>{{i+1}}</td>
                             <td>{{banner.name}}</td>
                             <td>
-                              <img [src]="banner.img" width="50">
+                              <img [src]="banner.img" width="140">
                             </td>
                             <td>
-                              <button class="btn btn-danger btn-xs">Delete</button>
+                              <button class="btn btn-danger btn-xs" (click)="deleteBanner(banner)">Delete</button>
                             </td>
                           </tr>
                         </tbody>                  

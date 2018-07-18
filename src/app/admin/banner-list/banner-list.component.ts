@@ -11,18 +11,29 @@ import { Banner } from '../../modal/banner.modal';
 export class BannerListComponent implements OnInit {
   pageTitle = 'Admin - Banner';
   title = 'Banner';
-  bannerList:Banner[];
+  bannerList: Banner[];
   constructor( private bannerService: BannerService) { }
 
   ngOnInit() {
       this.getBannerList();
   }
   getBannerList() {
-    this.bannerService.getBanneerList()
-    .valueChanges()
-      .subscribe(banners => {
-        this.bannerList = banners;
+    const banner = this.bannerService.getBanneerList();
+    banner.snapshotChanges().subscribe(data => {
+      console.log(data);
+      this.bannerList = [];
+      data.forEach(element => {
+        const y = element.payload.toJSON();
+        y['$key'] = element.key;
+        console.log(y);
+        this.bannerList.push(y as Banner);
         console.log(this.bannerList);
       });
-  }
+  });
+}
+
+deleteBanner(banner: Banner) {
+  this.bannerService.deleteBanner(banner.$key);
+}
+
 }
