@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="portlet-body flip-scroll">
-                      <table class="table table-bordered table-striped table-condensed flip-content">
+                      <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="bannerList.length > 0; else noBanner">
                         <thead class="flip-content">
                           <tr>
                             <th>ID</th>
@@ -53,8 +53,12 @@
                               <button class="btn btn-danger btn-xs" (click)="deleteBanner(banner)">Delete</button>
                             </td>
                           </tr>
+                         
                         </tbody>                  
                       </table>
+                      <ng-template #noBanner>
+                        <p>There is no banner in the system.</p>
+                    </ng-template>
                     </div>
                   </div>
                 </div>

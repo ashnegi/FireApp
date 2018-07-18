@@ -30,10 +30,9 @@ export class LoginComponent implements OnInit {
         this.errorMsg = err;
         setTimeout(() => {
            this.error = false;
+           f.reset();
            this.router.navigate(['/admin-login']);
         }, 5000);
       });
-      f.reset();
-
   }
 }
