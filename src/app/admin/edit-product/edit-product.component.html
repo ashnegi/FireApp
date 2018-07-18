@@ -67,8 +67,22 @@
                       <div class="form-group">
                         <label class="col-md-12 control-label text-left">Images</label>
                         <div class="col-md-12">
-
-                          <input type="text" class="form-control" name="" #img="ngModel" [(ngModel)]="product.img" name="img">
+                          <input type="file" (change)="uploadFile($event)" class="form-control">
+                          <br/>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-success" [style.width.%]="uploadPercent | async">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="col-md-12 control-label text-left">Images Url</label>
+                        <div class="col-md-12">
+                          {{downloadURL | async}}
+                          <input type="text" class="form-control" #img="ngModel" [(ngModel)]="product.img" name="img">
+                          <!-- <img [src]="downloadURL | async" alt="" width="80"> -->
 
                         </div>
                       </div>

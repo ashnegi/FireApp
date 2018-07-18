@@ -12,9 +12,12 @@ export class ProductService {
   private dbPath = '/products';
   productsRef: AngularFireList<Product> = null;
 
-  constructor(public afd: AngularFireDatabase) {}
+  constructor(public afd: AngularFireDatabase) {
+    this.productsRef = this.afd.list(this.dbPath);
+  }
 
   createProduct(product: Product): void {
+    console.log(product)
     this.productsRef.push(product);
   }
 

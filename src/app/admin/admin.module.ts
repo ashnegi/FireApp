@@ -12,13 +12,16 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { BannerListComponent } from './banner-list/banner-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { SearchFilterPipe } from '../pipe/filter.pipe';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    FlashMessagesModule.forRoot()
+
   ],
   declarations: [
     LoginComponent,

@@ -35,7 +35,7 @@ import { AuthGaurd} from './gaurds/auth.gaurd';
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
   ],
   providers: [ProductService, BannerService, AuthService, AuthGaurd],
   bootstrap: [AppComponent]

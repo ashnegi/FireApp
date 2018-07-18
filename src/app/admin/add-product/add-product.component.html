@@ -1,5 +1,6 @@
 <app-header>
 </app-header>
+<flash-messages></flash-messages>
 <div class="page-wrapper-row full-height m-t-30">
   <div class="page-wrapper-middle">
     <div class="page-container">
@@ -18,7 +19,8 @@
 
               <div class="portlet-body form">
                 <div class="p-t-20 p-b-20">
-                  <p class="alert alert-info"><i class="fa fa-info-circle"></i> All fields are required.</p>
+                  <p class="alert alert-info">
+                    <i class="fa fa-info-circle"></i> All fields are required.</p>
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-group">
@@ -55,11 +57,12 @@
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label class="control-label col-md-12">Featured <i>(optional)</i></label>
+                        <label class="control-label col-md-12">Featured
+                          <i>(optional)</i>
+                        </label>
                         <div class="col-md-12">
                           <div class="m-t-10">
-                            <input type="checkbox" #featured="ngModel" [(ngModel)]="product.featured" name="featured" [ngClass]="{'has-danger': featured.invalid && (featured.dirty || featured.touched), 'has-success': featured.valid && (featured.dirty || featured.touched)}"
-                              >
+                            <input type="checkbox" #featured="ngModel" [(ngModel)]="product.featured" name="featured" [ngClass]="{'has-danger': featured.invalid && (featured.dirty || featured.touched), 'has-success': featured.valid && (featured.dirty || featured.touched)}">
                           </div>
 
                         </div>
@@ -72,10 +75,23 @@
                       <div class="form-group">
                         <label class="col-md-12 control-label text-left">Images</label>
                         <div class="col-md-12">
+                          <input type="file" (change)="uploadFile($event)" class="form-control">
+                          <br/>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-success" [style.width.%]="uploadPercent | async">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="col-md-12 control-label text-left">Images Url</label>
+                        <div class="col-md-12">
+                          <div style="font-size:10px">{{downloadURL | async}}</div>
+                          <input type="text" class="form-control" #img="ngModel" [(ngModel)]="product.img" name="img"> 
+                          <!-- <img [src]="downloadURL | async" alt="" width="80"> -->
 
-                          <input type="text" class="form-control" name="" #img="ngModel" [(ngModel)]="product.img" name="img" [ngClass]="{'has-danger': img.invalid && (img.dirty || img.touched), 'has-success': img.valid && (img.dirty || img.touched)}"
-                            required>
-<i class="help-block">https://placeimg.com/640/480/tech</i>
                         </div>
                       </div>
                     </div>
@@ -86,7 +102,8 @@
                         <label class="col-md-12 control-label text-left">Description</label>
                         <div class="col-md-12">
                           <textarea class="form-control" cols="30" rows="10" #description="ngModel" [(ngModel)]="product.description" name="description"
-                            [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched), 'has-success': description.valid && (description.dirty || description.touched)}" required></textarea>
+                            [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched), 'has-success': description.valid && (description.dirty || description.touched)}"
+                            required></textarea>
                         </div>
                       </div>
                     </div>
