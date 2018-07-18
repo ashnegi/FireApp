@@ -1,0 +1,83 @@
+<app-header>
+</app-header>
+
+<div class="page-wrapper-row full-height m-t-30">
+  <div class="page-wrapper-middle">
+    <div class="page-container">
+      <div class="page-content-wrapper">
+        <div class="container">
+
+          <a class="btn btn-default" routerLink='/banner-list'>
+            <i class="fa fa-arrow-circle-left"></i> Back
+          </a>
+          <form #bannerAdd="ngForm" (ngSubmit)="OnSubmit(bannerAdd)">
+            <div class="portlet box green m-t-15">
+              <div class="portlet-title">
+                <div class="caption">
+                  Add Banner </div>
+              </div>
+
+              <div class="portlet-body form">
+                <div class="p-t-20 p-b-20">
+                  <p class="alert alert-info">
+                    <i class="fa fa-info-circle"></i> All fields are required.</p>
+                  <div class="row">
+                   
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-12">Name</label>
+                        <div class="col-md-12">
+                          <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="banner.name" [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched), 'has-success': name.valid && (name.dirty || name.touched)}"
+                            required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="col-md-12 control-label text-left">Images Url</label>
+                        <div class="col-md-12">
+                          <input type="text" class="form-control" #image="ngModel" name="img" [(ngModel)]="banner.img" [ngClass]="{'has-danger': image.invalid && (image.dirty || image.touched), 'has-success': image.valid && (image.dirty || image.touched)}" required> 
+                         
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row m-t-10" style="display: none;">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="col-md-12 control-label text-left">Images</label>
+                        <div class="col-md-12">
+                          <input type="file" (change)="uploadFile($event)" class="form-control">
+                          <br/>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-success" [style.width.%]="uploadPercent | async">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  
+                </div>
+                <div class="form-actions">
+                  <div class="row m-t-10">
+                    <div class="col-md-12">
+                      <button type="submit" class="btn btn-circle green" [disabled]="!bannerAdd.valid"  type="submit">Submit</button>
+                      <button type="button" class="btn btn-circle grey-salsa btn-outline" routerLink='/banner-list'>Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer>
+</app-footer>

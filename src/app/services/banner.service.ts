@@ -13,6 +13,11 @@ export class BannerService {
   constructor(public afd: AngularFireDatabase) {
 
   }
+  createBanner(banner: Banner): void {
+    console.log(banner);
+    this.bannerRef.push(banner);
+  }
+
   getBanneerList(): AngularFireList<Banner> {
     this.bannerRef = this.afd.list(this.dbPath);
     return this.bannerRef;

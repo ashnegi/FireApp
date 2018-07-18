@@ -41,7 +41,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {}
   onSubmit({ value, valid }: { value: Product; valid: boolean }) {
     if (valid) {
-      console.log(this.product)
+      console.log(this.product);
       this.flashMessagesService.show('New client added', {
         cssClass: 'alert-success',
         timeout: 2000

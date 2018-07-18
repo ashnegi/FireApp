@@ -13,6 +13,7 @@ import { BannerListComponent } from './banner-list/banner-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { SearchFilterPipe } from '../pipe/filter.pipe';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { AddBannerComponent } from './add-banner/add-banner.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     EditProductComponent,
     BannerListComponent,
     AddProductComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    AddBannerComponent
   ]
 })
 export class AdminModule {}

@@ -10,7 +10,7 @@
               <h1 class="m-t-5">{{pageTitle}}</h1>
             </div>
             <div class="page-title pull-right">
-              <button class=" btn btn-success">Add Banner</button>
+              <button [routerLink]="['/add-banner']" class=" btn btn-success">Add Banner</button>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="portlet-body flip-scroll">
-                      <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="bannerList.length > 0; else noBanner">
+                      <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="bannerList?.length > 0; else noBanner">
                         <thead class="flip-content">
                           <tr>
                             <th>ID</th>

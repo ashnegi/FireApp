@@ -7,6 +7,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { BannerListComponent } from './banner-list/banner-list.component';
 import {AuthGaurd} from '../gaurds/auth.gaurd';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AddBannerComponent } from './add-banner/add-banner.component';
 
 const adminRoutes: Routes = [
   // { path: 'admin', component: AdminComponent },
@@ -15,7 +16,8 @@ const adminRoutes: Routes = [
   { path: 'product-list', component: ProductListComponent, canActivate: [AuthGaurd] },
   { path: 'product/:key', component: EditProductComponent, canActivate: [AuthGaurd] },
   { path: 'add-product', component: AddProductComponent, canActivate: [AuthGaurd] },
-  { path: 'banner-list', component: BannerListComponent, canActivate: [AuthGaurd] }
+  { path: 'banner-list', component: BannerListComponent, canActivate: [AuthGaurd] },
+  { path: 'add-banner', component: AddBannerComponent, canActivate: [AuthGaurd]}
 ];
 
 @NgModule({
