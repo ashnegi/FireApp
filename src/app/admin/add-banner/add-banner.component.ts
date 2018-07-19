@@ -16,7 +16,7 @@ export class AddBannerComponent implements OnInit {
     img: ''
   };
   constructor(
-    private bannerService: BannerService;
+    private bannerService: BannerService,
     private router: Router,
     private flashMessagesService: FlashMessagesService
   ) { }
@@ -36,4 +36,6 @@ export class AddBannerComponent implements OnInit {
       this.router.navigate(['/banner-list']);
     }, 2001);
   }
+}
+
 }
