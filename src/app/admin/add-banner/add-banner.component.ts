@@ -18,19 +18,20 @@ export class AddBannerComponent implements OnInit {
   constructor(
     private bannerService: BannerService,
     private router: Router,
-    private flashMessagesService: FlashMessagesService
+    private flashMessagesService: FlashMessagesService,
+
   ) { }
 
   ngOnInit() {
   }
 
   OnSubmit({ value, valid }: { value: Banner; valid: boolean }) {
-    if(valid) {
+    if (valid) {
     console.log(this.banner);
-    // this.flashMessagesService.show('Banner Added Successfully', {
-    //   cssClass: 'alert-success',
-    //   timeout: 2000
-    // });
+    this.flashMessagesService.show('Banner Added Successfully', {
+      cssClass: 'alert-success',
+      timeout: 2000
+    });
     this.bannerService.createBanner(this.banner);
     setTimeout(() => {
       this.router.navigate(['/banner-list']);

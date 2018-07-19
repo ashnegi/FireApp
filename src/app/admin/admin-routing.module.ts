@@ -13,11 +13,14 @@ const adminRoutes: Routes = [
   // { path: 'admin', component: AdminComponent },
   { path: '', redirectTo: '/admin-login', pathMatch: 'full' },
   { path: 'admin-login', component: LoginComponent },
-  { path: 'product-list', component: ProductListComponent, canActivate: [AuthGaurd] },
-  { path: 'product/:key', component: EditProductComponent, canActivate: [AuthGaurd] },
-  { path: 'add-product', component: AddProductComponent, canActivate: [AuthGaurd] },
-  { path: 'banner-list', component: BannerListComponent, canActivate: [AuthGaurd] },
-  { path: 'add-banner', component: AddBannerComponent, canActivate: [AuthGaurd]}
+  { path: '', component: AdminComponent, canActivate: [AuthGaurd], children: [
+    { path: '', redirectTo: 'product-list', pathMatch: 'full' },
+    { path: 'product-list', component: ProductListComponent },
+    { path: 'product/:key', component: EditProductComponent },
+    { path: 'add-product', component: AddProductComponent },
+    { path: 'banner-list', component: BannerListComponent },
+    { path: 'add-banner', component: AddBannerComponent }
+  ]}
 ];
 
 @NgModule({

@@ -17,7 +17,7 @@ export class ProductService {
   }
 
   createProduct(product: Product): void {
-    console.log(product)
+    console.log(product);
     this.productsRef.push(product);
   }
 
