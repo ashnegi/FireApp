@@ -23,11 +23,11 @@
                       <div class="caption">
                         {{title}} </div>
                       <div class="action pull-right m-t-3">
-                        <select class="form-control">
+                        <!-- <select class="form-control">
                           <option value="">Newest</option>
                           <option value="">A to Z</option>
                           <option value="">Z to A</option>
-                        </select>
+                        </select> -->
                       </div>
                     </div>
 
@@ -51,7 +51,7 @@
                             <td>{{i+1}}</td>
                             <td>{{banner.name}}</td>
                             <td>
-                              <img [src]="banner.img" width="140">
+                              <img [src]="banner.img" width="80">
                             </td>
                             <td>
                               <button class="btn btn-danger btn-xs" (click)="deleteBanner(banner)">Delete</button>

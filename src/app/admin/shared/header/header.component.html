@@ -22,7 +22,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-default" [collapse]="isCollapsed">
                   <li>
-                    <a  (click) ="logout()" >
+                    <a (click)="logout()">
                       <i class="icon-key"></i> Log Out </a>
                   </li>
                 </ul>
@@ -40,12 +40,12 @@
           <div class="hor-menu  ">
             <ul class="nav navbar-nav">
               <li class="menu-dropdown classic-menu-dropdown ">
-                <a routerLink='/product-list'> Product
+                <a routerLink='/product-list' routerLinkActive='active'> Product
                   <span class="arrow"></span>
                 </a>
               </li>
               <li class="menu-dropdown classic-menu-dropdown ">
-                <a routerLink='/banner-list'> Banner
+                <a routerLink='/banner-list' routerLinkActive='active'> Banner
                   <span class="arrow"></span>
                 </a>
               </li>
