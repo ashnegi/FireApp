@@ -1,4 +1,3 @@
-
 <div class="page-wrapper-row full-height">
   <div class="page-wrapper-middle">
     <div class="page-container">
@@ -34,41 +33,49 @@
                     </div>
 
                     <div class="portlet-body flip-scroll">
-                      <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="productsList?.length > 0;else noProducts">
+                      <div class="text-center" *ngIf="loading">
+                        <div class="lds-facebook" ><div></div><div></div><div></div></div>
+                      </div>
+                      
+                      <div *ngIf="!loading">
+                        <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="productsList?.length > 0;else noProducts">
 
-                        <thead class="flip-content">
-                          <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Brand</th>
-                            <th>Image</th>
-                            <th>Featured</th>
-                            <th>Description</th>
-                            <th width="130">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                       
-                          <tr *ngFor="let product of productsList | searchfilter:'name,brand':query ; let i=index ">
-                            <td>{{i+1}}</td>
-                            <td>{{product.name}}</td>
-                            <td>{{product.brand}}</td>
-                            <td class="text-center"><img src="{{product.img}}" width="80" alt="" class="img-rounded"> </td>
-                            <td>{{product.featured}} </td>
-                            <td>{{product.description}} </td>
-                            <td>
-                              <a class="btn btn-primary btn-xs " routerLink="/product/{{product.slung}}">Edit</a>
-                              <button class="btn btn-danger btn-xs " (click)="deleteProduct(product) ">Delete</button>
-                            </td>
-                          </tr>
+                          <thead class="flip-content">
+                            <tr>
+                              <th>ID</th>
+                              <th>Name</th>
+                              <th>Brand</th>
+                              <th>Image</th>
+                              <th>Featured</th>
+                              <th>Description</th>
+                              <th width="130">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
 
-                        </tbody>
-                      </table>
+                            <tr *ngFor="let product of productsList | searchfilter:'name,brand':query ; let i=index ">
+                              <td>{{i+1}}</td>
+                              <td>{{product.name}}</td>
+                              <td>{{product.brand}}</td>
+                              <td class="text-center">
+                                <img src="{{product.img}}" width="80" alt="" class="img-rounded"> </td>
+                              <td>{{product.featured}} </td>
+                              <td>{{product.description}} </td>
+                              <td>
+                                <a class="btn btn-primary btn-xs " routerLink="/product/{{product.slung}}">Edit</a>
+                                <button class="btn btn-danger btn-xs " (click)="deleteProduct(product) ">Delete</button>
+                              </td>
+                            </tr>
 
-                      <ng-template #noProducts>
-                        <hr>
-                        <h5>There are no products in the system</h5>
-                      </ng-template>
+                          </tbody>
+                        </table>
+
+                        <ng-template #noProducts>
+                          <hr>
+                          <h5>There are no products in the system</h5>
+                        </ng-template>
+                      </div>
+
                     </div>
                   </div>
                 </div>
