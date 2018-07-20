@@ -11,10 +11,10 @@ export class BannerService {
   private dbPath = '/banner';
   bannerRef: AngularFireList<Banner> = null;
   constructor(public afd: AngularFireDatabase) {
-
+    this.bannerRef = this.afd.list(this.dbPath);
   }
   createBanner(banner: Banner): void {
-    console.log(banner);
+    // console.log(banner);
     this.bannerRef.push(banner);
   }
 
