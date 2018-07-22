@@ -6,14 +6,14 @@ import {HomeComponent} from './home/home.component';
 import { AuthGaurd } from '../gaurds/auth.gaurd';
 
 
-const adminRoutes: Routes = [
+const frontRoutes: Routes = [
     { path: '', component: FrontComponent, children: [
         { path: 'home', component: HomeComponent },
     ]}
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(adminRoutes)],
+    imports: [RouterModule.forChild(frontRoutes)],
     exports: [RouterModule]
 })
 export class FrontRoutingModule { }
