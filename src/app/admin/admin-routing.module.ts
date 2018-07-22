@@ -11,7 +11,7 @@ import { AddBannerComponent } from './add-banner/add-banner.component';
 
 const adminRoutes: Routes = [
   // { path: 'admin', component: AdminComponent },
-  { path: '', redirectTo: '/admin-login', pathMatch: 'full' },
+  // { path: '', redirectTo: '/admin-login', pathMatch: 'full' },
   { path: 'admin-login', component: LoginComponent },
   { path: '', component: AdminComponent, canActivate: [AuthGaurd], children: [
     { path: '', redirectTo: 'product-list', pathMatch: 'full' },

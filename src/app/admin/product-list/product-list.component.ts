@@ -9,21 +9,23 @@ import { Product } from '../../modal/product.modal';
 })
 export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService) {}
-
+  loading: boolean;
   productsList: Product[];
   product: Product;
   ngOnInit() {
-    this.getProductsList(); 
+    this.getProductsList();
   }
 
   getProductsList() {
-    let x = this.productService.getProductsList();
+    this.loading = true;
+    const x = this.productService.getProductsList();
     x.snapshotChanges().subscribe(item => {
       this.productsList = [];
       item.forEach(element => {
-        let y = element.payload.toJSON();
+        const y = element.payload.toJSON();
         y['$key'] = element.key;
         this.productsList.push(y as Product);
+        this.loading = false;
       });
     });
   }

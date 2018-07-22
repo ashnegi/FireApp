@@ -10,6 +10,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './router/app.router';
 import { AdminModule } from './admin/admin.module';
+import { FrontModule } from './frontend/front.module';
 import { TooltipModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -30,6 +31,7 @@ import { NavigationService } from './services/navigation.service';
     AppRoutingModule,
     FormsModule,
     AdminModule,
+    FrontModule,
     TooltipModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

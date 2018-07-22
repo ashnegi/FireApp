@@ -13,11 +13,12 @@ export class BannerListComponent implements OnInit {
   title = 'Banner';
   bannerList: Banner[];
   constructor( private bannerService: BannerService) { }
-
+  loading: boolean;
   ngOnInit() {
       this.getBannerList();
   }
   getBannerList() {
+    this.loading = true;
     const banner = this.bannerService.getBanneerList();
     banner.snapshotChanges().subscribe(data => {
       console.log(data);
@@ -25,9 +26,9 @@ export class BannerListComponent implements OnInit {
       data.forEach(element => {
         const y = element.payload.toJSON();
         y['$key'] = element.key;
-        console.log(y);
+        // console.log(y);
         this.bannerList.push(y as Banner);
-        console.log(this.bannerList);
+        this.loading = false;
       });
   });
 }

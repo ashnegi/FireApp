@@ -23,15 +23,20 @@
                       <div class="caption">
                         {{title}} </div>
                       <div class="action pull-right m-t-3">
-                        <select class="form-control">
+                        <!-- <select class="form-control">
                           <option value="">Newest</option>
                           <option value="">A to Z</option>
                           <option value="">Z to A</option>
-                        </select>
+                        </select> -->
                       </div>
                     </div>
 
                     <div class="portlet-body flip-scroll">
+                        <div class="text-center" *ngIf="loading">
+                        <div class="lds-facebook" ><div></div><div></div><div></div></div>
+                      </div>
+                      
+                      <div *ngIf="!loading">
                       <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="bannerList?.length > 0; else noBanner">
                         <thead class="flip-content">
                           <tr>
@@ -46,7 +51,7 @@
                             <td>{{i+1}}</td>
                             <td>{{banner.name}}</td>
                             <td>
-                              <img [src]="banner.img" width="140">
+                              <img [src]="banner.img" width="80">
                             </td>
                             <td>
                               <button class="btn btn-danger btn-xs" (click)="deleteBanner(banner)">Delete</button>
@@ -58,6 +63,7 @@
                       <ng-template #noBanner>
                         <p>There is no banner in the system.</p>
                     </ng-template>
+                    </div>
                     </div>
                   </div>
                 </div>
