@@ -39,17 +39,11 @@
 
           <div class="hor-menu  ">
             <ul class="nav navbar-nav">
-              <li class="menu-dropdown classic-menu-dropdown ">
-                <a routerLink='/product-list'> Product
+              <li class="menu-dropdown classic-menu-dropdown " *ngFor="let navItem of navItemList">
+                <a [routerLink]="navItem.routerLink"> {{navItem.label}}
                   <span class="arrow"></span>
                 </a>
               </li>
-              <li class="menu-dropdown classic-menu-dropdown ">
-                <a routerLink='/banner-list'> Banner
-                  <span class="arrow"></span>
-                </a>
-              </li>
-
             </ul>
           </div>
           <!-- END MEGA MENU -->
