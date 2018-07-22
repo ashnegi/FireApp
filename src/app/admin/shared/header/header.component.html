@@ -40,7 +40,7 @@
           <div class="hor-menu  ">
             <ul class="nav navbar-nav">
               <li class="menu-dropdown classic-menu-dropdown" *ngFor="let navItem of navItemList">
-                <a [routerLink]="navItem.routerLink"> {{navItem.label}}
+                <a [routerLink]="navItem.routerLink" routerLinkActive='active'> {{navItem.label}}
                   <span class="arrow"></span>
                 </a>
               </li>
