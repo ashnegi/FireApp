@@ -1,4 +1,7 @@
 /* Banner */
+body {
+  background: #f4f4f4;
+}
 
 .slick-dotted.slick-slider {
   margin-bottom: 0;

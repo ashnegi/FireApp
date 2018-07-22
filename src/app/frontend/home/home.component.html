@@ -8,7 +8,14 @@
               <h1 class="m-t-5">Home</h1>
             </div>
             <div>
-              <div class=" main-banner">
+              <div class="text-center" *ngIf="bannerLoading">
+                <div class="lds-facebook">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <div class=" main-banner" *ngIf="!bannerLoading">
                 <div *ngFor="let slide of bannerList" class="slide ">
                   <a>
                     <img src="{{ slide.img }}" alt="" class="img-fluid">
