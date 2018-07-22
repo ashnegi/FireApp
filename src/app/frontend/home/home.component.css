@@ -1,0 +1,38 @@
+/* Banner */
+
+.slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
+
+.slick-dots {
+  display: none !important;
+}
+
+.slick-dots li {
+  margin: 0;
+}
+
+.slick-dots li button:before {
+  font-size: 16px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #e8cc0e;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: -45px;
+}
+
+/* .slick-arrow {
+    display: none !important
+} */
+
+.main-banner.slick-slider {
+  /* margin-bottom: 50px; */
+}
+
+.main-banner-static.slick-dotted.slick-slider {
+  margin-bottom: 100px;
+}

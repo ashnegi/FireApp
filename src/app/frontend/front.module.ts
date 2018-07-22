@@ -7,7 +7,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { LoginComponent } from './login/login.component';
 import { FrontComponent } from './front.component';
-
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -16,6 +16,6 @@ import { FrontComponent } from './front.component';
     CollapseModule.forRoot(),
     FrontRoutingModule
   ],
-  declarations: [HeaderComponent, FooterComponent, LoginComponent, FrontComponent]
+  declarations: [HeaderComponent, FooterComponent, LoginComponent, FrontComponent, HomeComponent]
 })
 export class FrontModule {}
