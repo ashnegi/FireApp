@@ -8,6 +8,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { LoginComponent } from './login/login.component';
 import { FrontComponent } from './front.component';
 import { HomeComponent } from './home/home.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { HomeComponent } from './home/home.component';
     CollapseModule.forRoot(),
     FrontRoutingModule
   ],
-  declarations: [HeaderComponent, FooterComponent, LoginComponent, FrontComponent, HomeComponent]
+  declarations: [HeaderComponent, FooterComponent, LoginComponent, FrontComponent, HomeComponent, ProductsComponent]
 })
 export class FrontModule {}

@@ -4,11 +4,13 @@ import { LoginComponent } from './login/login.component';
 import {FrontComponent} from './front.component';
 import {HomeComponent} from './home/home.component';
 import { AuthGaurd } from '../gaurds/auth.gaurd';
+import { ProductsComponent } from './products/products.component';
 
 
 const frontRoutes: Routes = [
     { path: '', component: FrontComponent, children: [
         { path: 'home', component: HomeComponent },
+        { path: 'products', component: ProductsComponent}
     ]}
 ];
 
