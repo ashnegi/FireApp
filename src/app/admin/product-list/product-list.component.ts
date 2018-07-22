@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../modal/product.modal';
+import { NavItem } from '../../modal/nav.modal';
 
 @Component({
   selector: 'app-product-list',
@@ -12,6 +13,7 @@ export class ProductListComponent implements OnInit {
   loading: boolean;
   productsList: Product[];
   product: Product;
+  navItem: NavItem;
   ngOnInit() {
     this.getProductsList();
   }
