@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit {
         const y = element.payload.toJSON();
         y['$key'] = element.key;
         this.navItemList.push(y as NavItem);
-        console.log(this.navItemList)
       });
     });
   }
