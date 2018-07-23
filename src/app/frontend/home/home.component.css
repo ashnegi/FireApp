@@ -1,4 +1,4 @@
-/* Banner */
+
 body {
   background: #f4f4f4;
 }
@@ -28,13 +28,6 @@ body {
   bottom: -45px;
 }
 
-/* .slick-arrow {
-    display: none !important
-} */
-
-.main-banner.slick-slider {
-  /* margin-bottom: 50px; */
-}
 
 .main-banner-static.slick-dotted.slick-slider {
   margin-bottom: 100px;

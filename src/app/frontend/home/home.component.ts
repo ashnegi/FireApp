@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BannerService } from '../../services/banner.service';
 import {Banner} from '../../modal/banner.modal';
 
@@ -9,6 +9,7 @@ declare var $: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
   constructor(private bannerService: BannerService) {}
@@ -16,7 +17,6 @@ export class HomeComponent implements OnInit {
   bannerLoading: boolean;
   ngOnInit() {
     this.getBanner();
-
   }
 
   getBanner() {
@@ -38,20 +38,24 @@ export class HomeComponent implements OnInit {
 
   // Main Banner
   private banner() {
-    $('.main-banner').not('.slick-initialized').slick({
-      infinite: true,
-      dots: true,
-      nav: false,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      nextArrow: '<i class="fas fa-angle-right slick-next"></i>',
-      prevArrow: '<i class="fas fa-angle-left slick-prev"></i>',
-      responsive: [{
-        breakpoint: 1024,
-        settings: {
-          dots: false,
-        }
-      }]
-    });
+    $('.main-banner')
+      .not('.slick-initialized')
+      .slick({
+        infinite: true,
+        dots: true,
+        nav: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        nextArrow: '<i class="fas fa-angle-right slick-next"></i>',
+        prevArrow: '<i class="fas fa-angle-left slick-prev"></i>',
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              dots: false
+            }
+          }
+        ]
+      });
   }
 }

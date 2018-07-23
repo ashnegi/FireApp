@@ -3144,3 +3144,6 @@ Page Loading
   background: #5cb85c !important;
 }
 
+.page-container-bg-solid.page-header-top-fixed {
+  margin-top: 55px;
+}
