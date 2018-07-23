@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../modal/product.modal';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -11,10 +12,14 @@ export class ProductsComponent implements OnInit {
   productsList: Product[];
   product: Product;
   loading: boolean;
+  fiterBrand: FormGroup;
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.getProductsList();
+    this.fiterBrand = new FormGroup({
+      'brand': new FormControl('Samsung')
+    });
   }
   getProductsList() {
     this.loading = true;
@@ -29,4 +34,13 @@ export class ProductsComponent implements OnInit {
       });
     });
   }
+  onSubmit() {
+    console.log(this.fiterBrand);
+    this.productsList.filter(x => {
+       // x == this.fiterBrand.value.brand;
+    });
+  }
+
+
+
 }
