@@ -24,11 +24,8 @@ export class ProductsComponent implements OnInit {
       item.forEach(element => {
         const y = element.payload.toJSON();
         y['$key'] = element.key;
-        setTimeout(() => {
           this.productsList.push(y as Product);
           this.loading = false;
-        }, 1000);
-        console.log(this.productsList);
       });
     });
   }
