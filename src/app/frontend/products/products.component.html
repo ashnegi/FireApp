@@ -1,3 +1,4 @@
+
 <div class="page-container">
         <div class="page-content-wrapper">
            <div class="page-head">
@@ -24,7 +25,7 @@
                           <ul class="task-list">
                              <li *ngFor="let product of productsList">
                                 <div class="task-checkbox">
-                                   <input type="checkbox" class="liChild" value="2" name="test"> 
+                                   <input type="checkbox" value="2" name="{{product.brand}}"> 
                                 </div>
                                 <div class="task-title">
                                    <span class="task-title-sp">{{product.brand}} </span>
