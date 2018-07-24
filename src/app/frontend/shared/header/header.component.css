@@ -1,0 +1,13 @@
+.logo {
+    float: left;
+    color: #fff;
+    font-size: 28px;
+    margin: 10px 30px 10px 0;
+}
+.logo span{
+    color: #5cb85c;
+}
+
+.page-header{
+    height: 51px;
+}
