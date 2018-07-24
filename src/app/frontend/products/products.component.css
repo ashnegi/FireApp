@@ -1,15 +1,30 @@
-.lds-facebook{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.lds-facebook {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.thumbnail img{ 
-    height: 200px;
-    width: 100%;
+.thumbnail img {
+  height: 200px;
+  width: 100%;
 }
 
-.thumbnail .caption p{
-    margin: 0 0 10px 0;
+.thumbnail .caption p {
+  margin: 0 0 10px 0;
+}
+
+.tasks-widget {
+  border: 1px solid #ccc;
+  background: #f4f4f4;
+  min-height: 150px;
+}
+
+.portlet>.portlet-title {
+  border-bottom: 1px solid #8b949e;
+  padding: 10px;
+}
+
+.tasks-widget .task-list>li {
+  border-bottom: 1px solid #d6d6d6;
 }

@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { FrontComponent } from './front.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,14 @@ import { ProductsComponent } from './products/products.component';
     CollapseModule.forRoot(),
     FrontRoutingModule
   ],
-  declarations: [HeaderComponent, FooterComponent, LoginComponent, FrontComponent, HomeComponent, ProductsComponent]
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    LoginComponent,
+    FrontComponent,
+    HomeComponent,
+    ProductsComponent,
+    ProductDetailsComponent
+  ]
 })
 export class FrontModule {}

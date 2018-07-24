@@ -1,0 +1,31 @@
+
+<div class="page-wrapper-row full-height m-t-30">
+  <div class="page-wrapper-middle">
+    <div class="page-container">
+      <div class="page-content-wrapper">
+        <div class="container">
+
+          <button class="btn btn-default" (click)="goBack()">
+            <i class="fa fa-arrow-circle-left"></i> Back
+          </button>
+          <div  *ngFor="let product of productsList">
+            <h1>{{product.name}}</h1>
+            <p>{{product.brand}}</p>
+            <hr>
+            <div class="row">
+              <div class="col-xs-12">
+                <img [src]= "product.img" alt="" class="img-thumbnail img-responsive">
+              </div>
+            </div>
+            
+            <div class="m-t-20">
+              {{product.description}}
+            </div>
+             
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

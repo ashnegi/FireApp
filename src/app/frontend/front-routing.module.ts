@@ -5,13 +5,19 @@ import {FrontComponent} from './front.component';
 import {HomeComponent} from './home/home.component';
 import { AuthGaurd } from '../gaurds/auth.gaurd';
 import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 const frontRoutes: Routes = [
-    { path: '', component: FrontComponent, children: [
-        { path: 'home', component: HomeComponent },
-        { path: 'products', component: ProductsComponent}
-    ]}
+  {
+    path: '',
+    component: FrontComponent,
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'products/:key', component: ProductDetailsComponent }
+    ]
+  }
 ];
 
 @NgModule({

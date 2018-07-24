@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../modal/product.modal';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -12,13 +12,16 @@ export class ProductsComponent implements OnInit {
   productsList: Product[];
   product: Product;
   loading: boolean;
-  fiterBrand: FormGroup;
-  constructor(private productService: ProductService) { }
+  filterBrand: FormGroup;
+  constructor(
+    private productService: ProductService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.getProductsList();
-    this.fiterBrand = new FormGroup({
-      'brand': new FormControl('Samsung')
+    this.filterBrand = this.fb.group({
+      brandChecked: this.fb.array([])
     });
   }
   getProductsList() {
@@ -29,18 +32,26 @@ export class ProductsComponent implements OnInit {
       item.forEach(element => {
         const y = element.payload.toJSON();
         y['$key'] = element.key;
-          this.productsList.push(y as Product);
-          this.loading = false;
+        this.productsList.push(y as Product);
+        this.loading = false;
       });
     });
   }
-  onSubmit() {
-    console.log(this.fiterBrand);
+  onChange(brand: string, isChecked: boolean) {
+    const brandFormArray = <FormArray>this.filterBrand.controls.brandChecked;
+
+    if (isChecked) {
+      brandFormArray.push(new FormControl(brand));
+    } else {
+      const index = brandFormArray.controls.findIndex(x => x.value === brand);
+      brandFormArray.removeAt(index);
+    }
+  }
+  onSubmit(value, valid) {
+    console.log(this.filterBrand.value);
+    // console.log(this.filterBrand);
     this.productsList.filter(x => {
-       // x == this.fiterBrand.value.brand;
+      // x == this.filterBrand.value.brand;
     });
   }
-
-
-
 }
