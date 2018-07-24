@@ -32,7 +32,7 @@
                   <ul class="task-list">
                     <li *ngFor="let product of productsList">
                       <div class="task-checkbox">
-                        <input type="checkbox" (change)="onChange(product.brand, $event.target.checked)" [value]="product.brand">
+                        <input type="checkbox" (change)="onChange(product.brand, $event.target.checked)" [value]="product.brand" required>
                       </div>
                       <div class="task-title">
                         <span class="task-title-sp">{{product.brand}} </span>
@@ -40,7 +40,8 @@
                     </li>
                   </ul>
                   <div class="p-10">
-                    <button type="submit" class="btn blue-madison">Submit</button>
+                  <button type="submit" ng-disabled="!filterBrand.valid" class="btn blue-madison">Submit</button>
+                    <button (click)="resetForm()" class="btn blue-madison">Reset</button>
                   </div>
                 </div>
               </form>

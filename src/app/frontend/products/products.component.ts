@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../modal/product.modal';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormArray,
+  FormControl
+} from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -44,14 +50,23 @@ export class ProductsComponent implements OnInit {
       brandFormArray.push(new FormControl(brand));
     } else {
       const index = brandFormArray.controls.findIndex(x => x.value === brand);
+      console.log(index);
       brandFormArray.removeAt(index);
     }
   }
   onSubmit(value, valid) {
-    console.log(this.filterBrand.value);
+    const filters = this.filterBrand.get('brandChecked').value.toString();
+    console.log(filters);
     // console.log(this.filterBrand);
-    this.productsList.filter(x => {
-      // x == this.filterBrand.value.brand;
+    this.productsList = this.productsList.filter(obj => {
+      return obj.brand === filters;
     });
+    console.log(typeof this.productsList);
+  }
+  resetForm() {
+    this.filterBrand = this.fb.group({
+      brandChecked: this.fb.array([])
+    });
+    this.getProductsList();
   }
 }
