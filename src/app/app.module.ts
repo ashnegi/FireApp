@@ -22,7 +22,6 @@ import { AuthService } from './services/auth.service';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AuthGaurd} from './gaurds/auth.gaurd';
 import { NavigationService } from './services/navigation.service';
-// import { SearchFilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent],

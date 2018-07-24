@@ -12,8 +12,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { BannerListComponent } from './banner-list/banner-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { SearchFilterPipe } from '../pipe/filter.pipe';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AddBannerComponent } from './add-banner/add-banner.component';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
   imports: [
@@ -21,8 +21,7 @@ import { AddBannerComponent } from './add-banner/add-banner.component';
     AdminRoutingModule,
     FormsModule,
     CollapseModule.forRoot(),
-    FlashMessagesModule.forRoot()
-
+    SharedModule
   ],
   declarations: [
     LoginComponent,

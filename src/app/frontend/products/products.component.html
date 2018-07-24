@@ -13,7 +13,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <div class="portlet  tasks-widget" >
+        <div class="portlet  tasks-widget">
           <div class="portlet-title">
             <div class="caption caption-md">
               <span class="caption-subject bold uppercase">Filter By Brand</span>
@@ -40,7 +40,7 @@
                     </li>
                   </ul>
                   <div class="p-10">
-                  <button type="submit" ng-disabled="!filterBrand.valid" class="btn blue-madison">Submit</button>
+                    <button type="submit" ng-disabled="!filterBrand.valid" class="btn blue-madison">Submit</button>
                     <button (click)="resetForm()" class="btn blue-madison">Reset</button>
                   </div>
                 </div>
@@ -64,7 +64,7 @@
                   <a routerLink='{{product.slung}}'>{{product.name}}</a>
                 </h3>
                 <p>{{product.brand}}</p>
-                <p>{{product.description}}</p>
+                <p>{{product.description | truncate : 20}}</p>
                 <p>
                   <a class="btn blue-madison">Add Favourite</a>
                   <a class="btn green-meadow">Add to Cart</a>

@@ -1,4 +1,3 @@
-
 <div class="page-wrapper-row full-height m-t-30">
   <div class="page-wrapper-middle">
     <div class="page-container">
@@ -22,7 +21,8 @@
                       <div class="form-group">
                         <label class="control-label col-md-12">slung</label>
                         <div class="col-md-12">
-                          <input type="text" class="form-control" #slung="ngModel" [(ngModel)]="product.slung" name="slung">
+                          <input type="text" class="form-control" #slung="ngModel" [(ngModel)]="product.slung" name="slung" [ngClass]="{'has-danger': slung.invalid && (slung.dirty || slung.touched), 'has-success': slung.valid && (slung.dirty || slung.touched)}"
+                            required>
                         </div>
                       </div>
                     </div>
@@ -30,7 +30,8 @@
                       <div class="form-group">
                         <label class="control-label col-md-12">Name</label>
                         <div class="col-md-12">
-                          <input type="text" class="form-control" #name="ngModel" [(ngModel)]="product.name" name="name">
+                          <input type="text" class="form-control" #name="ngModel" [(ngModel)]="product.name" name="name" [ngClass]="{'has-danger': name.invalid && (name.dirty || name.touched), 'has-success': name.valid && (name.dirty || name.touched)}"
+                            required>
                         </div>
                       </div>
                     </div>
@@ -39,11 +40,11 @@
                       <div class="form-group">
                         <label class="control-label col-md-12">Brand</label>
                         <div class="col-md-12">
-                          <select class="form-control" #brand="ngModel" [(ngModel)]="product.brand" name="brand">
+                          <select class="form-control" #brand="ngModel" [(ngModel)]="product.brand" name="brand" [ngClass]="{'has-danger': brand.invalid && (brand.dirty || brand.touched), 'has-success': brand.valid && (brand.dirty || brand.touched)}"
+                            required>
                             <option *ngFor="let brand of brands; let i = index" [attr.value]="brand.name" [attr.selected]="i == 0 ? true : null">{{brand.name}}</option>
 
                           </select>
-
 
                         </div>
                       </div>
@@ -53,7 +54,7 @@
                         <label class="control-label col-md-12">Featured</label>
                         <div class="col-md-12">
                           <div class="m-t-10">
-                            <input type="checkbox" #featured="ngModel" [(ngModel)]="product.featured" name="featured">
+                            <input type="checkbox" #featured="ngModel" [(ngModel)]="product.featured" name="featured" [ngClass]="{'has-danger': featured.invalid && (featured.dirty || featured.touched), 'has-success': featured.valid && (featured.dirty || featured.touched)}">
                           </div>
 
                         </div>
@@ -80,7 +81,7 @@
                         <label class="col-md-12 control-label text-left">Images Url</label>
                         <div class="col-md-12">
                           {{downloadURL | async}}
-                          <input type="text" class="form-control" #img="ngModel" [(ngModel)]="product.img" name="img">
+                          <input type="text" class="form-control" [(ngModel)]="product.img" name="img">
                           <!-- <img [src]="downloadURL | async" alt="" width="80"> -->
 
                         </div>
@@ -92,7 +93,9 @@
                       <div class="form-group">
                         <label class="col-md-12 control-label text-left">Description</label>
                         <div class="col-md-12">
-                          <textarea class="form-control" cols="30" rows="10" #description="ngModel" [(ngModel)]="product.description" name="description"></textarea>
+                          <textarea class="form-control" cols="30" rows="10" #description="ngModel" [(ngModel)]="product.description" name="description"
+                            [ngClass]="{'has-danger': description.invalid && (description.dirty || description.touched), 'has-success': description.valid && (description.dirty || description.touched)}"
+                            required></textarea>
                         </div>
                       </div>
                     </div>
@@ -115,4 +118,3 @@
     </div>
   </div>
 </div>
-

@@ -42,17 +42,16 @@
             <div class="row" *ngIf="!loading">
               <div class="col-sm-6 col-md-3" *ngFor="let product of productsList">
                 <div class="thumbnail">
-                  <div class="thumbnail">
-                    <img [src]="product.img" alt="{{product.name}}" class="img-responsive">
-
-                  </div>
+                  <img [src]="product.img" alt="{{product.name}}" class="img-responsive">
                   <div class="caption">
-                    <h3>{{product.name}}</h3>
-                    <p>{{product.description}}</p>
-                    <p>{{product.featured}}</p>
+                    <h3>
+                      <a routerLink='{{product.slung}}'>{{product.name}}</a>
+                    </h3>
+                    <p>{{product.brand}}</p>
+                    <p>{{product.description | truncate : 20}}</p>
                     <p>
-                      <a class="btn btn-primary">Add Favourite</a>
-                      <a class="btn btn-success">Add to Cart</a>
+                      <a class="btn blue-madison">Add Favourite</a>
+                      <a class="btn green-meadow">Add to Cart</a>
                     </p>
                   </div>
                 </div>

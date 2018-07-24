@@ -60,15 +60,9 @@ export class EditProductComponent implements OnInit {
 
   onSubmit(f) {
     const $key = this.route.snapshot.paramMap.get('key');
-    console.log($key);
-    const slung = f.value.slung;
-    const name = f.value.name;
-    const brand = f.value.brand;
-    const featured = f.value.featured;
-    const img = f.value.img;
-    const description = f.value.description;
-    console.log(this.productsList[0]);
-    console.log(this.productsList[0].$key);
+    // console.log($key);
+    // console.log(this.productsList[0]);
+    // console.log(this.productsList[0].$key);
     this.productService.updateProduct(this.productsList[0].$key, {
       slung: f.value.slung,
       name: f.value.name,

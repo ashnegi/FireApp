@@ -34,9 +34,13 @@
 
                     <div class="portlet-body flip-scroll">
                       <div class="text-center" *ngIf="loading">
-                        <div class="lds-facebook" ><div></div><div></div><div></div></div>
+                        <div class="lds-facebook">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
                       </div>
-                      
+
                       <div *ngIf="!loading">
                         <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="productsList?.length > 0;else noProducts">
 
@@ -60,7 +64,7 @@
                               <td class="text-center">
                                 <img src="{{product.img}}" width="80" alt="" class="img-rounded"> </td>
                               <td>{{product.featured}} </td>
-                              <td>{{product.description}} </td>
+                              <td>{{product.description | truncate : 50}} </td>
                               <td>
                                 <a class="btn btn-primary btn-xs " routerLink="/product/{{product.slung}}">Edit</a>
                                 <button class="btn btn-danger btn-xs " (click)="deleteProduct(product) ">Delete</button>
