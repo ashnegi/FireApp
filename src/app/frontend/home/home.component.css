@@ -4,8 +4,9 @@ body {
 }
 
 .slick-dotted.slick-slider {
-  margin-bottom: 0;
+  margin-bottom: 30px;
   margin-top:20px;
+  overflow: hidden;
 }
 
 .slick-dots {
@@ -33,3 +34,15 @@ body {
 .main-banner-static.slick-dotted.slick-slider {
   margin-bottom: 100px;
 }
+
+.slick-slide img {
+  width: 100%;
+  max-width: 100%;
+}
+.slick-prev,
+.slick-next {
+  font-size: 75px;
+}
+
+.slick-next {right: 30px}
+.slick-prev {left: 30px; z-index: 1;}
