@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BannerService } from '../../services/banner.service';
-import {Banner} from '../../modal/banner.modal';
+import { ProductService } from '../../services/product.service';
+import { Banner } from '../../modal/banner.modal';
+import { Product } from '../../modal/product.modal';
 
 declare var jquery: any;
 declare var $: any;
@@ -12,11 +14,17 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
-  constructor(private bannerService: BannerService) {}
+  constructor(
+    private bannerService: BannerService,
+    private productService: ProductService
+  ) {}
   bannerList: Banner[];
+  productsList: Product[];
   bannerLoading: boolean;
+  loading: boolean;
   ngOnInit() {
     this.getBanner();
+    this.getProductsList();
   }
 
   getBanner() {
@@ -32,6 +40,26 @@ export class HomeComponent implements OnInit {
         setTimeout(() => {
           this.banner();
         }, 400);
+      });
+    });
+  }
+
+  getProductsList() {
+    this.loading = true;
+    const x = this.productService.getProductsList();
+    x.snapshotChanges().subscribe(item => {
+      this.productsList = [];
+      item.forEach(element => {
+        const y = element.payload.toJSON();
+        y['$key'] = element.key;
+        setTimeout(() => {
+          if (this.productsList.length === 3) {
+            return;
+          } else {
+            this.productsList.push(y as Product);
+          }
+          this.loading = false;
+        }, 1000);
       });
     });
   }
