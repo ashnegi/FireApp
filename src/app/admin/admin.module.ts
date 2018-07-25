@@ -14,6 +14,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { SearchFilterPipe } from '../pipe/filter.pipe';
 import { AddBannerComponent } from './add-banner/add-banner.component';
 import { SharedModule } from '../shared.module';
+import { ReviewListComponent } from './reviews/reviews.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { SharedModule } from '../shared.module';
     BannerListComponent,
     AddProductComponent,
     SearchFilterPipe,
-    AddBannerComponent
+    AddBannerComponent,
+    ReviewListComponent
   ]
 })
 export class AdminModule {}

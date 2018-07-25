@@ -3147,3 +3147,6 @@ Page Loading
 .page-container-bg-solid.page-header-top-fixed {
   margin-top: 55px;
 }
+.overflow-auto {
+  overflow: auto
+}

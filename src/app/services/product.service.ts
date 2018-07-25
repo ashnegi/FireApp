@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFireDatabase,
-  AngularFireList,
-} from 'angularfire2/database';
-// import { Observable } from 'rxjs/Observable';
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { Product } from '../modal/product.modal';
-// import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {

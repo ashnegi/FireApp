@@ -38,59 +38,59 @@
           </div>
 
           <h2>User Reviews</h2>
+          <hr/>
           <div class="row">
-            <div class="col-md-6">
-              <div class="media mt-5" *ngFor="let key of reviews">
-                <a class="pull-left" href="javascript:void(0);">
-                  <img src="{{key.image}}" class="review-user-thumb" alt="">
-                </a>
-                <div class="media-body">
-                  <h5>{{key.name}}</h5>
-                  <div class="review-rating">
-                    <i ng-repeat="r in Array(key.rating)" class="fas fa-star"></i>
-                  </div>
-                  <!--New Delhi-->
-                  <p class="mt-2">{{key.description}}</p>
-                </div>
+            <div class="col-md-6 height-500 overflow-auto">
+              <div *ngIf="reviews?.length > 0; else noReviews ">
+
               </div>
+              <div class="media mt-5" *ngFor="let key of reviews">
+                <div class="media-body">
+                  <h4>
+                    <b>{{key.name}}</b>
+                  </h4>
+                  <div class="review-rating">
+                    <i *ngFor="let item of arrayOne(key.rating);" class="fas fa-star"></i>
+                  </div>
+                  <p class="mt-2">{{key.review}}</p>
+                </div>
+                <hr/>
+              </div>
+
+              <ng-template #noReviews>
+                <h5>No reviews yet for the product.</h5>
+              </ng-template>
             </div>
             <div class="col-md-6">
+              <h3 class="m-t-0">Write Review</h3>
               <div class="form-horizontal">
-                <!-- TASK HEAD -->
-                <div class="form">
-
-                  <!-- TASK TITLE -->
+                <form novalidate [formGroup]="reviewForm" (ngSubmit)="onSubmit(reviewForm)" class="form">
                   <div class="form-group">
                     <div class="col-md-12">
-                      <input type="text" class="form-control todo-taskbody-tasktitle" placeholder="Name"> </div>
+                      <input type="text" class="form-control todo-taskbody-tasktitle" placeholder="Name" name="name" formControlName="name"> </div>
                   </div>
-                  <!-- TASK DESC -->
                   <div class="form-group">
                     <div class="col-md-12">
-                      <textarea class="form-control todo-taskbody-taskdesc" rows="8" placeholder="Task Description..."></textarea>
-                    </div>
-                  </div>
-                  <!-- END TASK DESC -->
-
-                  <!-- TASK TAGS -->
-                  <div class="form-group">
-                    <div class="col-md-12">
-                      <select class="form-control">
-                        <option value="Pending">One</option>
-                        <option value="Completed">Two</option>
-                        <option value="Testing">Three</option>
-                        <option value="Approved">Four</option>
-                        <option value="Rejected">Five</option>
+                      <select class="form-control" name="rating" formControlName="rating">
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
                       </select>
 
                     </div>
                   </div>
-                  <!-- TASK TAGS -->
-                  <div class="form-actions right todo-form-actions">
-                    <button class="btn btn-circle btn-sm green">Save Changes</button>
-                    <button class="btn btn-circle btn-sm btn-default">Cancel</button>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <textarea class="form-control todo-taskbody-taskdesc" rows="8" placeholder="Review..." name="review" formControlName="review"></textarea>
+                    </div>
                   </div>
-                </div>
+                  <div class="form-actions right todo-form-actions">
+                    <button class="btn btn-circle btn-sm green" [disabled]="reviewForm.invalid">Save Changes</button>
+                    <button class="btn btn-circle btn-sm btn-default">Reset</button>
+                  </div>
+                </form>
 
               </div>
             </div>

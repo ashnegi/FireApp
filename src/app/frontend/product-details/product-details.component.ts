@@ -4,6 +4,9 @@ import { Location } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../modal/product.modal';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Review } from '../../modal/review.modal';
+import { ReviewService } from '../../services/reviews.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,25 +17,33 @@ export class ProductDetailsComponent implements OnInit {
   productsList: Product[];
   product: any;
   loading: boolean;
+  reviews: Review[];
 
-  reviews = [
-      {
-        'name': 'Mac',
-        'img': 'ábc.jpg',
-        'description': 'asdjandjk ad adald aldjalkdjal dalk ',
-        'rating': 4,
-      }
-    ];
-
+  reviewForm: FormGroup;
+  review: Review = {
+    name: '',
+    rating: 0,
+    review: ''
+  };
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder,
+    private reviewService: ReviewService
   ) {}
 
   ngOnInit() {
     this.getProduct();
+    this.reviewForm = this.fb.group({
+      name: ['', Validators.required],
+      rating: ['', Validators.required],
+      review: ['', Validators.required],
+      productName: [],
+      productSlung: []
+    });
+    this.getAllReviews();
   }
 
   getProduct() {
@@ -56,6 +67,35 @@ export class ProductDetailsComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+  arrayOne(n: number): any[] {
+    return Array(n);
+  }
 
-  
+  getAllReviews() {
+    const key = this.route.snapshot.paramMap.get('key');
+    console.log(key);
+    const x = this.reviewService.getReviewList();
+    x.snapshotChanges().subscribe(item => {
+      this.reviews = [];
+      item.forEach(element => {
+        const y = element.payload.toJSON();
+        y['$key'] = element.key;
+        this.reviews.push(y as Review);
+        this.reviews = this.reviews.filter(obj => {
+          return obj.productSlung === key;
+        });
+      });
+    });
+  }
+
+  onSubmit({ value, valid }: { value: Review; valid: boolean }) {
+    this.reviewForm.value.rating = +this.reviewForm.value.rating;
+    this.reviewForm.value.productName = this.productsList[0].name;
+    this.reviewForm.value.productSlung = this.productsList[0].slung;
+    if (valid) {
+      // console.log(this.reviewForm.value);
+      this.reviewService.createReview(this.reviewForm.value);
+      this.reviewForm.reset();
+    }
+  }
 }

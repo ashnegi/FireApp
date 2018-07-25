@@ -8,6 +8,7 @@ import { BannerListComponent } from './banner-list/banner-list.component';
 import {AuthGaurd} from '../gaurds/auth.gaurd';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddBannerComponent } from './add-banner/add-banner.component';
+import { ReviewListComponent } from './reviews/reviews.component';
 
 const adminRoutes: Routes = [
   // { path: 'admin', component: AdminComponent },
@@ -19,7 +20,8 @@ const adminRoutes: Routes = [
     { path: 'product/:key', component: EditProductComponent },
     { path: 'add-product', component: AddProductComponent },
     { path: 'banner-list', component: BannerListComponent },
-    { path: 'add-banner', component: AddBannerComponent }
+    { path: 'add-banner', component: AddBannerComponent },
+    { path: 'reviews-list', component: ReviewListComponent }
   ]}
 ];
 

@@ -1,0 +1,79 @@
+<div class="page-wrapper-row full-height">
+  <div class="page-wrapper-middle">
+    <div class="page-container">
+      <div class="page-content-wrapper">
+        <div class="page-head">
+          <div class="container">
+            <div class="page-title">
+              <h1 class="m-t-5">Admin - Reviews</h1>
+            </div>
+
+          </div>
+        </div>
+        <div class="page-content m-t-0">
+          <div class="container">
+            <div class="page-content-inner">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="portlet box green">
+                    <div class="portlet-title">
+                      <div class="caption">
+                        Reviews </div>
+                    </div>
+
+                    <div class="portlet-body flip-scroll">
+                      <div class="text-center" *ngIf="loading">
+                        <div class="lds-facebook">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                      </div>
+
+                      <div *ngIf="!loading">
+                        <table class="table table-bordered table-striped table-condensed flip-content" *ngIf="reviewList?.length > 0;else noReviews">
+
+                          <thead class="flip-content">
+                            <tr>
+                              <th>ID</th>
+                              <th>Name</th>
+                              <th>Product Name</th>
+                              <th>Rating</th>
+                              <th>Review</th>
+                              <th width="80">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            <tr *ngFor="let review of reviewList ; let i=index ">
+                              <td>{{i+1}}</td>
+                              <td>{{review.name}}</td>
+                              <td>{{review.productName}}</td>
+                              <td>{{review.rating}}</td>
+                              <td>{{review.review | truncate : 100}} </td>
+                              <td>
+                                <button class="btn btn-danger btn-xs " (click)="deleteReview(review) ">Delete</button>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+
+                        <ng-template #noReviews>
+                          <hr>
+                          <h5>There are no reviews in the system</h5>
+                        </ng-template>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

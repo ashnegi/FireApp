@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit {
       item.forEach(element => {
         const y = element.payload.toJSON();
         y['$key'] = element.key;
-       
         setTimeout(() => {
           if (this.productsList.length === 4) {
             return;
