@@ -40,26 +40,37 @@
           <h2>User Reviews</h2>
           <hr/>
           <div class="row">
+
             <div class="col-md-6 height-500 overflow-auto">
-              <div *ngIf="reviews?.length > 0; else noReviews ">
 
+              <div class="lds-facebook" *ngIf="reviewLoading">
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
-              <div class="media mt-5" *ngFor="let key of reviews">
-                <div class="media-body">
-                  <h4>
-                    <b>{{key.name}}</b>
-                  </h4>
-                  <div class="review-rating">
-                    <i *ngFor="let item of arrayOne(key.rating);" class="fas fa-star"></i>
-                  </div>
-                  <p class="mt-2">{{key.review}}</p>
+
+              <div *ngIf="!reviewLoading">
+                <div *ngIf="reviews?.length > 0; else noReviews ">
+
                 </div>
-                <hr/>
+                <div class="media mt-5" *ngFor="let key of reviews">
+                  <div class="media-body">
+                    <h4>
+                      <b>{{key.name}}</b>
+                    </h4>
+                    <div class="review-rating">
+                      <i *ngFor="let item of arrayOne(key.rating);" class="fas fa-star"></i>
+                    </div>
+                    <p class="mt-2">{{key.review}}</p>
+                  </div>
+                  <hr/>
+                </div>
+
+                <ng-template #noReviews>
+                  <h5>No reviews yet for the product.</h5>
+                </ng-template>
               </div>
 
-              <ng-template #noReviews>
-                <h5>No reviews yet for the product.</h5>
-              </ng-template>
             </div>
             <div class="col-md-6">
               <h3 class="m-t-0">Write Review</h3>
@@ -88,7 +99,7 @@
                   </div>
                   <div class="form-actions right todo-form-actions">
                     <button class="btn btn-circle btn-sm green" [disabled]="reviewForm.invalid">Save Changes</button>
-                    <button class="btn btn-circle btn-sm btn-default">Reset</button>
+                    <button class="btn btn-circle btn-sm btn-default" (click)="resetForm()">Reset</button>
                   </div>
                 </form>
 

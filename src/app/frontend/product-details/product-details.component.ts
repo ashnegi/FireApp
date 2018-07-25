@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   productsList: Product[];
   product: any;
   loading: boolean;
+  reviewLoading: boolean;
   reviews: Review[];
 
   reviewForm: FormGroup;
@@ -72,6 +73,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getAllReviews() {
+    this.reviewLoading = true;
     const key = this.route.snapshot.paramMap.get('key');
     const x = this.reviewService.getReviewList();
     x.snapshotChanges().subscribe(item => {
@@ -83,6 +85,7 @@ export class ProductDetailsComponent implements OnInit {
         this.reviews = this.reviews.filter(obj => {
           return obj.productSlung === key;
         });
+        this.reviewLoading = false;
       });
     });
   }
@@ -96,5 +99,9 @@ export class ProductDetailsComponent implements OnInit {
       this.reviewService.createReview(this.reviewForm.value);
       this.reviewForm.reset();
     }
+  }
+
+  resetForm() {
+    this.reviewForm.reset();
   }
 }
