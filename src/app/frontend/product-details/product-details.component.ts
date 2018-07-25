@@ -5,7 +5,6 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../modal/product.modal';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
-
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -14,19 +13,30 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class ProductDetailsComponent implements OnInit {
   productsList: Product[];
   product: any;
+  loading: boolean;
+
+  reviews = [
+      {
+        'name': 'Mac',
+        'img': 'ábc.jpg',
+        'description': 'asdjandjk ad adald aldjalkdjal dalk ',
+        'rating': 4,
+      }
+    ];
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private location: Location,
-    private router: Router,
-  ) { }
-
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getProduct();
   }
 
   getProduct() {
+    this.loading = true;
     const key = this.route.snapshot.paramMap.get('key');
     const x = this.productService.getProductsList();
     x.snapshotChanges().subscribe(item => {
@@ -39,6 +49,7 @@ export class ProductDetailsComponent implements OnInit {
       this.productsList = this.productsList.filter(obj => {
         return obj.slung === key;
       });
+      this.loading = false;
     });
   }
 
@@ -46,4 +57,5 @@ export class ProductDetailsComponent implements OnInit {
     this.location.back();
   }
 
+  
 }

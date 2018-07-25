@@ -1,11 +1,10 @@
-
 body {
   background: #f4f4f4;
 }
 
 .slick-dotted.slick-slider {
   margin-bottom: 30px;
-  margin-top:20px;
+  margin-top: 20px;
   overflow: hidden;
 }
 
@@ -30,7 +29,6 @@ body {
   bottom: -45px;
 }
 
-
 .main-banner-static.slick-dotted.slick-slider {
   margin-bottom: 100px;
 }
@@ -39,10 +37,38 @@ body {
   width: 100%;
   max-width: 100%;
 }
+
 .slick-prev,
 .slick-next {
   font-size: 75px;
 }
 
-.slick-next {right: 30px}
-.slick-prev {left: 30px; z-index: 1;}
+.slick-next {
+  right: 30px
+}
+
+.slick-prev {
+  left: 30px;
+  z-index: 1;
+}
+
+.thumbnail img {
+  height: 200px;
+  width: 100%;
+}
+
+.thumbnail .caption p {
+  margin: 0 0 10px 0;
+}
+span.banner-overlay {
+  position: absolute;
+  color: #fff;
+  z-index: 2;
+  background: rgba(0, 0, 0, .3);
+  width: 100%;
+  height: 64px;
+  bottom: 0;
+  font-size: 30px;
+  padding: 10px 30px;
+      font-weight: 300;
+}

@@ -1,29 +1,101 @@
-
 <div class="page-wrapper-row full-height m-t-30">
   <div class="page-wrapper-middle">
     <div class="page-container">
       <div class="page-content-wrapper">
         <div class="container">
-
           <button class="btn btn-default" (click)="goBack()">
             <i class="fa fa-arrow-circle-left"></i> Back
           </button>
-          <div  *ngFor="let product of productsList">
-            <h1>{{product.name}}</h1>
-            <p>{{product.brand}}</p>
-            <hr>
-            <div class="row">
-              <div class="col-xs-12">
-                <img [src]= "product.img" alt="" class="img-thumbnail img-responsive">
+
+          <div class="text-center" *ngIf="loading">
+            <div class="lds-facebook">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div *ngIf="!loading">
+            <div class="row m-t-15 p-b-40" *ngFor="let product of productsList">
+              <div class="col-md-6">
+                <img [src]="product.img" alt="" class="img-thumbnail img-responsive width-full">
+              </div>
+              <div class="col-md-6">
+                <div>
+                  <h1>{{product.name}}</h1>
+                  <p>{{product.brand}}</p>
+                  <hr>
+
+                  <p>
+                    <a class="btn blue">Add Favourite</a>
+                    <a class="btn green">Add to Cart</a>
+                  </p>
+                  <div class="m-t-20">
+                    {{product.description}}
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <div class="m-t-20">
-              {{product.description}}
-            </div>
-             
-            
           </div>
+
+          <h2>User Reviews</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="media mt-5" *ngFor="let key of reviews">
+                <a class="pull-left" href="javascript:void(0);">
+                  <img src="{{key.image}}" class="review-user-thumb" alt="">
+                </a>
+                <div class="media-body">
+                  <h5>{{key.name}}</h5>
+                  <div class="review-rating">
+                    <i ng-repeat="r in Array(key.rating)" class="fas fa-star"></i>
+                  </div>
+                  <!--New Delhi-->
+                  <p class="mt-2">{{key.description}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-horizontal">
+                <!-- TASK HEAD -->
+                <div class="form">
+
+                  <!-- TASK TITLE -->
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <input type="text" class="form-control todo-taskbody-tasktitle" placeholder="Name"> </div>
+                  </div>
+                  <!-- TASK DESC -->
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <textarea class="form-control todo-taskbody-taskdesc" rows="8" placeholder="Task Description..."></textarea>
+                    </div>
+                  </div>
+                  <!-- END TASK DESC -->
+
+                  <!-- TASK TAGS -->
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <select class="form-control">
+                        <option value="Pending">One</option>
+                        <option value="Completed">Two</option>
+                        <option value="Testing">Three</option>
+                        <option value="Approved">Four</option>
+                        <option value="Rejected">Five</option>
+                      </select>
+
+                    </div>
+                  </div>
+                  <!-- TASK TAGS -->
+                  <div class="form-actions right todo-form-actions">
+                    <button class="btn btn-circle btn-sm green">Save Changes</button>
+                    <button class="btn btn-circle btn-sm btn-default">Cancel</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
