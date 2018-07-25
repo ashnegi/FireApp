@@ -25,6 +25,14 @@
   padding: 10px;
 }
 
+.tasks-widget .task-list > li > .task-checkbox{
+  float: none;  
+  width: 100%;
+}
+.tasks-widget .task-list > li > .task-checkbox input[type="checkbox"]{
+  margin: 0 18px 0 0;
+}
+
 .tasks-widget .task-list>li {
   border-bottom: 1px solid #d6d6d6;
 }

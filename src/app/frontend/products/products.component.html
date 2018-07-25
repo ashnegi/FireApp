@@ -27,15 +27,15 @@
                 <div></div>
                 <div></div>
               </div>
-              <form [formGroup]="filterBrand" (ngSubmit)="onSubmit(filterBrand)">
-                <div *ngIf=" !loading">
+              <form [formGroup]="filterBrand" (ngSubmit)="onSubmit()">
+                <div *ngIf="!loading">
                   <ul class="task-list">
-                    <li *ngFor="let product of productsList">
+                    <li *ngFor="let brand of filterBrand.controls.brandList.controls; let i = index">
                       <div class="task-checkbox">
-                        <input type="checkbox" (change)="onChange(product.brand, $event.target.checked)" [value]="product.brand" required>
-                      </div>
-                      <div class="task-title">
-                        <span class="task-title-sp">{{product.brand}} </span>
+                          <label formArrayName="brandList" >
+                              <input type="checkbox" [formControlName]="i">
+                              {{brandList[i].name}}
+                            </label>
                       </div>
                     </li>
                   </ul>
