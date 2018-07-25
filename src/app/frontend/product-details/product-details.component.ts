@@ -73,7 +73,6 @@ export class ProductDetailsComponent implements OnInit {
 
   getAllReviews() {
     const key = this.route.snapshot.paramMap.get('key');
-    console.log(key);
     const x = this.reviewService.getReviewList();
     x.snapshotChanges().subscribe(item => {
       this.reviews = [];
