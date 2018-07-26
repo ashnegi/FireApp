@@ -23,6 +23,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AuthGaurd} from './gaurds/auth.gaurd';
 import { NavigationService } from './services/navigation.service';
 import { ReviewService } from './services/reviews.service';
+import { ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent],
@@ -39,6 +40,7 @@ import { ReviewService } from './services/reviews.service';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     CollapseModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [ProductService, BannerService, AuthService, NavigationService, AuthGaurd, ReviewService],
   bootstrap: [AppComponent]
