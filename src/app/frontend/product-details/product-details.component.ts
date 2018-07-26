@@ -32,7 +32,8 @@ export class ProductDetailsComponent implements OnInit {
     private location: Location,
     private router: Router,
     private fb: FormBuilder,
-    private reviewService: ReviewService
+    private reviewService: ReviewService,
+    private flashMessagesService: FlashMessagesService
   ) {}
 
   ngOnInit() {
@@ -98,6 +99,10 @@ export class ProductDetailsComponent implements OnInit {
       // console.log(this.reviewForm.value);
       this.reviewService.createReview(this.reviewForm.value);
       this.reviewForm.reset();
+      this.flashMessagesService.show('New Review Added', {
+        cssClass: 'alert-success',
+        timeout: 2000
+      });
     }
   }
 

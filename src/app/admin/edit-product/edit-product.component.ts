@@ -33,18 +33,17 @@ export class EditProductComponent implements OnInit {
     { name: 'Micromax' },
     { name: 'LG' }
   ];
-  // private basePath = 'uploads/';
   ngOnInit() {
     this.getProduct();
   }
 
   getProduct() {
     const key = this.route.snapshot.paramMap.get('key');
-    let x = this.productService.getProductsList();
+    const x = this.productService.getProductsList();
     x.snapshotChanges().subscribe(item => {
       this.productsList = [];
       item.forEach(element => {
-        let y = element.payload.toJSON();
+        const y = element.payload.toJSON();
         y['$key'] = element.key;
         this.productsList.push(y as Product);
       });
@@ -60,9 +59,6 @@ export class EditProductComponent implements OnInit {
 
   onSubmit(f) {
     const $key = this.route.snapshot.paramMap.get('key');
-    // console.log($key);
-    // console.log(this.productsList[0]);
-    // console.log(this.productsList[0].$key);
     this.productService.updateProduct(this.productsList[0].$key, {
       slung: f.value.slung,
       name: f.value.name,
@@ -83,8 +79,9 @@ export class EditProductComponent implements OnInit {
     // observe percentage changes
     this.uploadPercent = task.percentageChanges();
     // get notified when the download URL is available
-    task.snapshotChanges().pipe(
-      finalize(() => this.downloadURL = fileRef.getDownloadURL())
-    ).subscribe();
+    task
+      .snapshotChanges()
+      .pipe(finalize(() => (this.downloadURL = fileRef.getDownloadURL())))
+      .subscribe();
   }
 }
