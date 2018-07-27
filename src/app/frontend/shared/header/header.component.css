@@ -11,3 +11,28 @@
 .page-header{
     height: 51px;
 }
+
+.float-left{
+    float: left;;
+}
+
+.search-box {
+    width: 240px;
+    float: right;
+    margin: 15px 0 0 30px;
+    color: rgba(188, 194, 203, 0.40);
+    border-bottom: rgba(188, 194, 203, 0.30) solid 1px;
+    cursor: pointer;
+}
+
+.search-logo{
+    float: none;
+    color: #444d58;
+    text-align: center;
+    margin: 20px 0 10px 0;
+}
+
+.search-modal{
+    background: #fff;
+    
+}

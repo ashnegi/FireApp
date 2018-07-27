@@ -12,20 +12,24 @@ export class LoginComponent implements OnInit {
   user: any = {};
   error;
   errorMsg = '';
+  loading: boolean;
 
   constructor( public authService: AuthService, private router: Router) { }
 
   ngOnInit() {}
 
   onSubmit(f) {
+      this.loading = true;
       // console.log(f);
       const email = f.value.email;
       const password = f.value.password;
       this.authService.login(email, password)
       .then(() => {
+        this.loading = false;
         this.router.navigate(['/product-list']);
       })
       .catch(err => {
+        this.loading = false;
         this.error = true;
         this.errorMsg = err;
         setTimeout(() => {
