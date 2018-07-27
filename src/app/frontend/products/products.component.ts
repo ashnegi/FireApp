@@ -20,14 +20,16 @@ export class ProductsComponent implements OnInit {
   product: Product;
   loading: boolean;
   filterBrand: FormGroup;
-  brandList = [
-    { name: 'Apple', id: 1 },
-    { name: 'Micromax', id: 2 },
-    { name: 'Samsung', id: 3 },
-    { name: 'Micromax', id: 4 },
-    { name: 'MI', id: 5 },
-    { name: 'LG', id: 6 }
-  ];
+  brandsLength = [];
+  brandsLengthModifed = [];
+  // brandList = [
+  //   { name: 'Apple', count: 0 },
+  //   { name: 'Micromax', count: 0 },
+  //   { name: 'Samsung', count: 0 },
+  //   { name: 'Micromax', count: 0 },
+  //   { name: 'MI', count: 0 },
+  //   { name: 'LG', count: 0 }
+  // ];
   constructor(
     private productService: ProductService,
     private fb: FormBuilder
@@ -51,6 +53,29 @@ export class ProductsComponent implements OnInit {
         this.loading = false;
       });
       this.productsListModified = [...this.productsList];
+      // console.log(this.productsListModified);
+
+      this.productsListModified.forEach(ele => {
+        this.brandsLength.push(ele.brand);
+      });
+      this.brandsLength.sort();
+      let current = null;
+      let cnt = 0;
+      for (let i = 0; i < this.brandsLength.length; i++) {
+        if (this.brandsLength[i] !== current) {
+          if (cnt > 0) {
+            this.brandsLengthModifed.push({ current, cnt });
+          }
+          current = this.brandsLength[i];
+          cnt = 1;
+        } else {
+          cnt++;
+        }
+      }
+      if (cnt > 0) {
+        this.brandsLengthModifed.push({ current, cnt });
+      }
+      // console.log(this.brandsLengthModifed);
     });
   }
   onChange(brand: string, isChecked: boolean) {

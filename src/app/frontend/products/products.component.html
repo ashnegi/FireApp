@@ -30,12 +30,12 @@
               <form [formGroup]="filterBrand" (ngSubmit)="onSubmit()">
                 <div *ngIf="!loading">
                   <ul class="task-list">
-                    <li *ngFor="let brand of brandList">
+                    <li *ngFor="let brand of brandsLengthModifed">
                       <label class="task-title">
-                        <input type="checkbox" (change)="onChange(brand.name, $event.target.checked)" [value]="brand.name" required>
-                        <span class="task-title-sp">{{brand.name}} </span>
+                        <input type="checkbox" (change)="onChange(brand.current, $event.target.checked)" [value]="brand.current" required>
+                        <span class="task-title-sp">{{brand.current}} - ({{brand.cnt}}) </span>
                       </label>
-                    
+
                     </li>
                   </ul>
                   <div class="p-10">

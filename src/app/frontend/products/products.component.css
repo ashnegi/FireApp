@@ -35,3 +35,7 @@
 .tasks-widget .task-list>li {
   border-bottom: 1px solid #d6d6d6;
 }
+
+.task-title input[type='checkbox']:checked + span {
+  font-weight: bold
+} 
