@@ -16,30 +16,28 @@ import {
 })
 export class ProductsComponent implements OnInit {
   productsList: Product[];
+  productsListModified: Product[];
   product: Product;
   loading: boolean;
   filterBrand: FormGroup;
   brandList = [
-    { name: 'Apple',  id: 1 },
-    { name: 'Micromax',  id: 2 },
+    { name: 'Apple', id: 1 },
+    { name: 'Micromax', id: 2 },
     { name: 'Samsung', id: 3 },
     { name: 'Micromax', id: 4 },
     { name: 'MI', id: 5 },
-    { name: 'LG', id: 6 },
+    { name: 'LG', id: 6 }
   ];
-  controls;
   constructor(
     private productService: ProductService,
     private fb: FormBuilder
-  ) {
-    const controls = this.brandList.map(c => new FormControl(false));
-    this.filterBrand = this.fb.group({
-      brandList: new FormArray(controls)
-    });
-  }
+  ) {}
 
   ngOnInit() {
     this.getProductsList();
+    this.filterBrand = this.fb.group({
+      brandChecked: this.fb.array([])
+    });
   }
   getProductsList() {
     this.loading = true;
@@ -52,30 +50,25 @@ export class ProductsComponent implements OnInit {
         this.productsList.push(y as Product);
         this.loading = false;
       });
+      this.productsListModified = [...this.productsList];
     });
   }
-  // onChange(brand: string, isChecked: boolean) {
-  //   const brandFormArray = <FormArray>this.filterBrand.controls.brandChecked;
+  onChange(brand: string, isChecked: boolean) {
+    const brandFormArray = <FormArray>this.filterBrand.controls.brandChecked;
 
-  //   if (isChecked) {
-  //     brandFormArray.push(new FormControl(brand));
-  //   } else {
-  //     const index = brandFormArray.controls.findIndex(x => x.value === brand);
-  //     console.log(index);
-  //     brandFormArray.removeAt(index);
-  //   }
-  // }
+    if (isChecked) {
+      brandFormArray.push(new FormControl(brand));
+    } else {
+      const index = brandFormArray.controls.findIndex(x => x.value === brand);
+      console.log(index);
+      brandFormArray.removeAt(index);
+    }
+  }
   onSubmit() {
-   // const filters = this.filterBrand.get('brandChecked').value.toString();
-    // console.log(filters);
-    // // console.log(this.filterBrand);
-    // this.productsList = this.productsList.filter(obj => {
-    //   return obj.brand === filters;
-    // });
-    console.log(this.filterBrand.value.brandList);
-    const selectedBrands = this.filterBrand.value.brandList;
-    this.productsList.filter(x => {
-      return x.brand === selectedBrands;
+    const filters = this.filterBrand.get('brandChecked');
+    const arrayFilter = filters.value;
+    this.productsListModified = this.productsList.filter(function(item) {
+      return arrayFilter.includes(item.brand);
     });
   }
   resetForm() {

@@ -30,13 +30,12 @@
               <form [formGroup]="filterBrand" (ngSubmit)="onSubmit()">
                 <div *ngIf="!loading">
                   <ul class="task-list">
-                    <li *ngFor="let brand of filterBrand.controls.brandList.controls; let i = index">
-                      <div class="task-checkbox">
-                          <label formArrayName="brandList" >
-                              <input type="checkbox" [formControlName]="i">
-                              {{brandList[i].name}}
-                            </label>
-                      </div>
+                    <li *ngFor="let brand of brandList">
+                      <label class="task-title">
+                        <input type="checkbox" (change)="onChange(brand.name, $event.target.checked)" [value]="brand.name" required>
+                        <span class="task-title-sp">{{brand.name}} </span>
+                      </label>
+                    
                     </li>
                   </ul>
                   <div class="p-10">
@@ -56,7 +55,9 @@
             <div></div>
             <div></div>
           </div>
-          <div class="col-sm-6 col-md-4" *ngFor="let product of productsList">
+
+
+          <div class="col-sm-6 col-md-4" *ngFor="let product of productsListModified">
             <div class="thumbnail">
               <img [src]="product.img" alt="{{product.name}}" class="img-responsive">
               <div class="caption">
@@ -72,6 +73,8 @@
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
     </div>

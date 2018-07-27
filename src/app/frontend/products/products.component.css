@@ -26,8 +26,7 @@
 }
 
 .tasks-widget .task-list > li > .task-checkbox{
-  float: none;  
-  width: 100%;
+  float: left;  
 }
 .tasks-widget .task-list > li > .task-checkbox input[type="checkbox"]{
   margin: 0 18px 0 0;
