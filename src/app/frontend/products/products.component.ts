@@ -22,14 +22,6 @@ export class ProductsComponent implements OnInit {
   filterBrand: FormGroup;
   brandsLength = [];
   brandsLengthModifed = [];
-  // brandList = [
-  //   { name: 'Apple', count: 0 },
-  //   { name: 'Micromax', count: 0 },
-  //   { name: 'Samsung', count: 0 },
-  //   { name: 'Micromax', count: 0 },
-  //   { name: 'MI', count: 0 },
-  //   { name: 'LG', count: 0 }
-  // ];
   constructor(
     private productService: ProductService,
     private fb: FormBuilder
@@ -54,7 +46,8 @@ export class ProductsComponent implements OnInit {
       });
       this.productsListModified = [...this.productsList];
       // console.log(this.productsListModified);
-
+      this.brandsLength.length = 0;
+      this.brandsLengthModifed.length = 0;
       this.productsListModified.forEach(ele => {
         this.brandsLength.push(ele.brand);
       });
