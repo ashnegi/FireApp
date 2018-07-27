@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   ) {}
   bannerList: Banner[];
   productsList: Product[];
+  productsListModified: Product[];
+  productsListHome: Product[];
   bannerLoading: boolean;
   loading: boolean;
   ngOnInit() {
@@ -49,21 +51,30 @@ export class HomeComponent implements OnInit {
     const x = this.productService.getProductsList();
     x.snapshotChanges().subscribe(item => {
       this.productsList = [];
+      this.productsListHome = [];
       item.forEach(element => {
         const y = element.payload.toJSON();
         y['$key'] = element.key;
-        setTimeout(() => {
-          if (this.productsList.length === 4) {
-            return;
-          } else {
-            this.productsList.push(y as Product);
-          }
-          this.loading = false;
-        }, 1000);
+        this.productsList.push(y as Product);
+        // this.productsListHome = [...this.productsList];
+        if (this.productsListHome.length === 4) {
+          return;
+        } else {
+          this.productsListHome.push(y as Product);
+        }
+        this.loading = false;
       });
+      this.productsListModified = [...this.productsList];
+      this.getFeaturedProductsList();
     });
   }
-
+  getFeaturedProductsList() {
+    console.log(this.productsListModified);
+    this.productsListModified = this.productsList.filter( (item) => {
+      return item.featured === true;
+    });
+    console.log(this.productsListModified);
+  }
   // Main Banner
   private banner() {
     $('.main-banner')
