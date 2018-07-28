@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import { Search } from '../modal/search.modal';
+import { Product } from '../modal/product.modal';
 
 @Injectable()
 export class SearchService {
   private dbPath = '/products';
-  productsRef: AngularFireList<Search> = null;
+  productsRef: AngularFireList<Product> = null;
 
   constructor(public afd: AngularFireDatabase) {
     this.productsRef = this.afd.list(this.dbPath);

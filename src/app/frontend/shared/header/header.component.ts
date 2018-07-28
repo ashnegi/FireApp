@@ -5,7 +5,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from '../../../modal/product.modal';
-import { SearchService } from '../../../services/search.service';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   resultList: any[];
 
   constructor( private navService: NavigationService,
-    private modalService: BsModalService, private searchService: SearchService) { }
+    private modalService: BsModalService, private prodService: ProductService) { }
 
   ngOnInit() {
     this.getNavList();
@@ -51,7 +51,8 @@ export class HeaderComponent implements OnInit {
     this.searchForm.get('search').valueChanges.subscribe(val => {
       if (val != null) {
         const searchText = val.toLowerCase();
-        const x = this.searchService.getProductsList();
+        console.log(searchText);
+        const x = this.prodService.getProductsList();
         x.snapshotChanges().subscribe(item => {
           this.productsList = [];
           item.forEach(element => {
