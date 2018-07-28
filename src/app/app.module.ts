@@ -24,6 +24,7 @@ import { AuthGaurd} from './gaurds/auth.gaurd';
 import { NavigationService } from './services/navigation.service';
 import { ReviewService } from './services/reviews.service';
 import { ModalModule } from 'ngx-bootstrap';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent],
@@ -42,7 +43,7 @@ import { ModalModule } from 'ngx-bootstrap';
     CollapseModule.forRoot(),
     ModalModule.forRoot()
   ],
-  providers: [ProductService, BannerService, AuthService, NavigationService, AuthGaurd, ReviewService],
+  providers: [ProductService, BannerService, AuthService, NavigationService, AuthGaurd, ReviewService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

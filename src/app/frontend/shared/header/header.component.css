@@ -29,10 +29,28 @@
     float: none;
     color: #444d58;
     text-align: center;
-    margin: 20px 0 10px 0;
+    margin: 40px 0 15px 0;
+    font-size: 42px;
 }
 
-.search-modal{
-    background: #fff;
-    
+.search-modal .fa-times {
+    font-size: 28px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    color: #000;
+    opacity: 0.2;
 }
+.search-modal .fa-times:hover{
+    opacity:1;
+}
+
+.form-control-lg{
+    padding: 6px 50px 6px 12px;
+}
+
+.form-control-lg{
+    padding: 25px 12px;
+}
+ 

@@ -69,11 +69,11 @@ export class HomeComponent implements OnInit {
     });
   }
   getFeaturedProductsList() {
-    console.log(this.productsListModified);
+    // console.log(this.productsListModified);
     this.productsListModified = this.productsList.filter( (item) => {
       return item.featured === true;
     });
-    console.log(this.productsListModified);
+  //  console.log(this.productsListModified);
   }
   // Main Banner
   private banner() {

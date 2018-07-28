@@ -22,15 +22,29 @@
     </div>
 </div>
 <ng-template #template>
-  
   <div class="search-modal">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-              </button>  
+    <i class="fas fa-times"  (click)="modalRef.hide()"></i> 
     <h1 class="logo search-logo">Fire<span>App</span></h1>
-    <h4 class="modal-title text-center">Search Products</h4>
-    <div class="form-group">
-        <input type="text" class="form-control">
+    <h4 class="modal-title text-center">Search Products by Name or Brand</h4>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        
+            <form  [formGroup]="searchForm" >
+            <div class="form-group">
+                <input type="text" formControlName="search" class="form-control form-control-lg">
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="row about-links">
+        <div class="col-md-8 col-md-offset-2">
+            <ul class="list-unstyled" *ngFor="let product of resultList">
+                <li><h4>Products</h4></li>
+                <li>
+                 <a routerLink='/products/{{product.slung}}' (click)="modalRef.hide()">{{product.name}} {{product.brand}}</a>   
+                </li>
+            </ul>
+        </div>
     </div>
   </div>
 </ng-template>
