@@ -1,5 +1,4 @@
 import { Component, OnInit , TemplateRef} from '@angular/core';
-import 'rxjs/add/operator/map';
 import { NavigationService } from '../../../services/navigation.service';
 import { NavItem } from '../../../modal/nav.modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -19,7 +18,6 @@ export class HeaderComponent implements OnInit {
   modalRef: BsModalRef;
   searchForm: FormGroup;
   productsList: Product[];
-  loading: boolean;
   resultList: any[];
 
   constructor( private navService: NavigationService,
