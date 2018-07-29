@@ -55,8 +55,6 @@ export class HeaderComponent implements OnInit {
     this.searchForm.get('search').valueChanges.subscribe(val => {
       if (val !== '') {
         const searchText = val.toLowerCase();
-        const arrayFilter = Array.of(searchText);
-        console.log(arrayFilter);
         const x = this.prodService.getProductsList();
         x.snapshotChanges().subscribe(item => {
           this.productsList = [];
@@ -70,7 +68,6 @@ export class HeaderComponent implements OnInit {
               data.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1
             );
           });
-          // console.log(this.resultList);
         });
       } else {
         this.resultList = [];
