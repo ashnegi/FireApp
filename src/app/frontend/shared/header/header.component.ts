@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
 
   onChanges(): void {
     this.searchForm.get('search').valueChanges.subscribe(val => {
-      if (val !== '' || val !== null || val !== undefined) {
+      if (val !== null) {
         const searchText = val.toLowerCase();
         const x = this.prodService.getProductsList();
         x.snapshotChanges().subscribe(item => {
