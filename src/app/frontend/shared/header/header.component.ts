@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit {
           // console.log(this.resultList);
         });
       } else {
-        this.resultList = [''];
+        this.resultList = [];
       }
     });
   }
