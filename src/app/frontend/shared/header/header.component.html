@@ -26,7 +26,7 @@
 </div>
 <ng-template #template>
   <div class="search-modal">
-    <i class="fas fa-times" (click)="modalRef.hide()"></i>
+    <i class="fas fa-times" (click)="onHidden()"></i>
     <h1 class="logo search-logo">Fire
       <span>App</span>
     </h1>
@@ -43,18 +43,21 @@
     </div>
     <div class="row about-links">
       <div class="col-md-8 col-md-offset-2">
-        <h3 class="m-b-25" *ngIf="resultList?.length">Products</h3>
-        <ul class="list-tyled" *ngFor="let product of resultList">
-          <li>
-            <a routerLink='/products/{{product.slung}}' (click)="modalRef.hide()">
-              <h4>{{product.name}}</h4>
-            </a>
-            <h5>
-              <b>Brand: </b> {{product.brand}}</h5>
-            <hr>
-
-          </li>
-        </ul>
+        <div *ngIf="resultList?.length">
+            <h3 class="m-b-25" *ngIf="resultList?.length">Products</h3>
+            <ul  *ngFor="let product of resultList">
+              <li>
+                <a routerLink='/products/{{product.slung}}' (click)="onHidden()">
+                  <h4>{{product.name}}</h4>
+                </a>
+                <h5>
+                  <b>Brand: </b> {{product.brand}}</h5>
+                <hr>
+    
+              </li>
+            </ul>
+        </div>
+       
       </div>
     </div>
   </div>

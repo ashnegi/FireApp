@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   productsList: Product[];
   resultList: any[];
 
+
   constructor(
     private navService: NavigationService,
     private modalService: BsModalService,
@@ -53,7 +54,7 @@ export class HeaderComponent implements OnInit {
 
   onChanges(): void {
     this.searchForm.get('search').valueChanges.subscribe(val => {
-      if (val !== '') {
+      if (val !== '' || val !== null || val !== undefined) {
         const searchText = val.toLowerCase();
         const x = this.prodService.getProductsList();
         x.snapshotChanges().subscribe(item => {
@@ -73,5 +74,11 @@ export class HeaderComponent implements OnInit {
         this.resultList = [];
       }
     });
+  }
+
+  onHidden() {
+    this.searchForm.reset();
+    this.resultList = [];
+    this.modalRef.hide();
   }
 }
