@@ -1,4 +1,4 @@
-import { Component, OnInit , TemplateRef} from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NavigationService } from '../../../services/navigation.service';
 import { NavItem } from '../../../modal/nav.modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -20,13 +20,16 @@ export class HeaderComponent implements OnInit {
   productsList: Product[];
   resultList: any[];
 
-  constructor( private navService: NavigationService,
-    private modalService: BsModalService, private prodService: ProductService) { }
+  constructor(
+    private navService: NavigationService,
+    private modalService: BsModalService,
+    private prodService: ProductService
+  ) {}
 
   ngOnInit() {
     this.getNavList();
     this.searchForm = new FormGroup({
-        'search' : new FormControl(null)
+      search: new FormControl(null)
     });
     this.onChanges();
   }
@@ -42,16 +45,18 @@ export class HeaderComponent implements OnInit {
     });
   }
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template,
-     Object.assign({}, { class: 'search-custom-dialog' })
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'search-custom-dialog' })
     );
   }
 
   onChanges(): void {
     this.searchForm.get('search').valueChanges.subscribe(val => {
-      if (val != null) {
+      if (val !== '') {
         const searchText = val.toLowerCase();
-        console.log(searchText);
+        const arrayFilter = Array.of(searchText);
+        console.log(arrayFilter);
         const x = this.prodService.getProductsList();
         x.snapshotChanges().subscribe(item => {
           this.productsList = [];
@@ -59,16 +64,17 @@ export class HeaderComponent implements OnInit {
             const y = element.payload.toJSON();
             y['$key'] = element.key;
             this.productsList.push(y as Product);
-            this.resultList = this.productsList.filter(data => {
-                const matchCase = data.name || data.brand;
-                return searchText === matchCase.toLowerCase();
-           });
-           console.log(this.resultList);
           });
+          this.resultList = this.productsList.filter(function(data) {
+            return (
+              data.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1
+            );
+          });
+          // console.log(this.resultList);
         });
+      } else {
+        this.resultList = [''];
       }
     });
   }
-
-
 }

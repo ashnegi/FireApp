@@ -85,6 +85,7 @@ export class ProductsComponent implements OnInit {
   onSubmit() {
     const filters = this.filterBrand.get('brandChecked');
     const arrayFilter = filters.value;
+    // console.log(arrayFilter)
     this.productsListModified = this.productsList.filter(function(item) {
       return arrayFilter.includes(item.brand);
     });

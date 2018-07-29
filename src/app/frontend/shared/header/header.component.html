@@ -1,50 +1,61 @@
 <div class="page-wrapper-row">
-    <div class="page-wrapper-top">
-        <div class="page-header">
-            <div class="page-header-menu">
-                <div class="container">
-                    <div class="hor-menu ">
-                        <h1 class="logo">Fire<span>App</span></h1>
-                        <ul class="nav navbar-nav">
-                            <li routerLinkActive='active' class="menu-dropdown classic-menu-dropdown" *ngFor="let navItem of navItemList">
-                                <a [routerLink]="navItem.routerLink">{{navItem.label}}
-                                    <span class="arrow"></span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="search-box" (click)="openModal(template)">
-                          Search <i class="fas fa-search pull-right"></i>
-                          </div>
-                    </div>
-                </div>
+  <div class="page-wrapper-top">
+    <div class="page-header">
+      <div class="page-header-menu">
+        <div class="container">
+          <div class="hor-menu ">
+            <h1 class="logo">Fire
+              <span>App</span>
+            </h1>
+            <ul class="nav navbar-nav">
+              <li routerLinkActive='active' class="menu-dropdown classic-menu-dropdown" *ngFor="let navItem of navItemList">
+                <a [routerLink]="navItem.routerLink">{{navItem.label}}
+                  <span class="arrow"></span>
+                </a>
+              </li>
+            </ul>
+            <div class="search-box" (click)="openModal(template)">
+              Search
+              <i class="fas fa-search pull-right"></i>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <ng-template #template>
   <div class="search-modal">
-    <i class="fas fa-times"  (click)="modalRef.hide()"></i> 
-    <h1 class="logo search-logo">Fire<span>App</span></h1>
+    <i class="fas fa-times" (click)="modalRef.hide()"></i>
+    <h1 class="logo search-logo">Fire
+      <span>App</span>
+    </h1>
     <h4 class="modal-title text-center">Search Products by Name</h4>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-        
-            <form  [formGroup]="searchForm" >
-            <div class="form-group">
-                <input type="text" formControlName="search" class="form-control form-control-lg">
-            </div>
-            </form>
-        </div>
+      <div class="col-md-8 col-md-offset-2">
+
+        <form [formGroup]="searchForm">
+          <div class="form-group">
+            <input type="text" formControlName="search" class="form-control form-control-lg">
+          </div>
+        </form>
+      </div>
     </div>
     <div class="row about-links">
-        <div class="col-md-8 col-md-offset-2">
-            <ul class="list-unstyled" *ngFor="let product of resultList">
-                <li><h4>Products</h4></li>
-                <li>
-                 <a routerLink='/products/{{product.slung}}' (click)="modalRef.hide()">{{product.name}} {{product.brand}}</a>   
-                </li>
-            </ul>
-        </div>
+      <div class="col-md-8 col-md-offset-2">
+        <h3 class="m-b-25" *ngIf="resultList?.length">Products</h3>
+        <ul class="list-tyled" *ngFor="let product of resultList">
+          <li>
+            <a routerLink='/products/{{product.slung}}' (click)="modalRef.hide()">
+              <h4>{{product.name}}</h4>
+            </a>
+            <h5>
+              <b>Brand: </b> {{product.brand}}</h5>
+            <hr>
+
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </ng-template>
